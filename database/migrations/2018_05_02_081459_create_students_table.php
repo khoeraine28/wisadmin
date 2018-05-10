@@ -43,8 +43,9 @@ class CreateStudentsTable extends Migration
             $table->string('band')->nullable();//may not be needed
             $table->string('string')->nullable();//may not be needed
             $table->longText('otherinfo')->nullable();
-            $table->boolean('disciplinaryproblem');
+            $table->boolean('disciplinaryproblem')->nullable(); //may not be needed
             $table->longText('disciplinaryproblemexplanation')->nullable();
+            //-----------------
             $table->longText('previousschool');
             $table->longText('previousschooladdress');
             $table->longText('schooltable');
@@ -68,7 +69,7 @@ class CreateStudentsTable extends Migration
             $table->string('motherlastname');
             $table->string('mothermiddlename');
             $table->string('mothercitizenship');
-            $table->string('motherpassport');
+            $table->string('motherpassport'); //may mot be needed // ----not needed
             $table->string('mothervisastatus');
             $table->longText('motheremployer');
             $table->string('motherofficenumber');
@@ -111,7 +112,7 @@ class CreateStudentsTable extends Migration
             $table->longText('medications')->nullable();
             $table->boolean('schoolhourmedication');
             //---------------------
-            $table->boolean('firstaid');
+            $table->boolean('firstaidd');
             $table->boolean('emergencycare');
             $table->boolean('hospitalemergencycare');
             $table->boolean('oralmedication');
