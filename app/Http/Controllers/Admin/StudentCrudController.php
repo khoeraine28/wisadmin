@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
+
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\StudentRequest as StoreRequest;
 use App\Http\Requests\StudentRequest as UpdateRequest;
@@ -65,68 +66,98 @@ class StudentCrudController extends CrudController
         $this->crud->addField(
             ['name' => 'firstname',
             'label' => 'First Name', 
-            'tab' => 'Applicant Information']
+            'tab' => 'Applicant Information',
+            'wrapperAttributes' => [
+                        'class' => 'form-group col-md-4'
+                    ],]
             , 'update/create/both');
 
         $this->crud->addField(
             ['name' => 'lastname',
             'label' => 'Last Name',
-            'tab' => 'Applicant Information']
+            'tab' => 'Applicant Information',
+            'wrapperAttributes' => [
+                        'class' => 'form-group col-md-4'
+                    ],]
             , 'update/create/both');
 
 
         $this->crud->addField(
             ['name' => 'middlename',
             'label' => 'Midde Name',
-            'tab' => 'Applicant Information']
+            'tab' => 'Applicant Information',
+            'wrapperAttributes' => [
+                        'class' => 'form-group col-md-4'
+                    ],]
             , 'update/create/both');
 
         $this->crud->addField(
             ['name' => 'gender', 
             'tab' => 'Applicant Information',
-            'type' => 'enum']
+            'type' => 'enum',
+            'wrapperAttributes' => [
+                        'class' => 'form-group col-md-4'
+                    ],]
             , 'update/create/both');
 
         $this->crud->addField(
             ['name' => 'birthdate',
             'label' => 'Date of Birth',
-            'tab' => 'Applicant Information']
+            'tab' => 'Applicant Information',
+            'wrapperAttributes' => [
+                        'class' => 'form-group col-md-4'
+                    ],]
             , 'update/create/both');
 
         $this->crud->addField(
             ['name' => 'citizenship', 
-            'tab' => 'Applicant Information']
+            'tab' => 'Applicant Information',
+            'wrapperAttributes' => [
+                        'class' => 'form-group col-md-4'
+                    ],]
             , 'update/create/both');
 
-        $this->crud->addField(
-            ['name' => 'passport', 
-            'tab' => 'Applicant Information']
-            , 'update/create/both');
+        // $this->crud->addField(
+        //     ['name' => 'passport', 
+        //     'tab' => 'Applicant Information']
+        //     , 'update/create/both');
 
         $this->crud->addField(
             ['name' => 'birthplace',
             'label' => 'Place of Birth',
-            'tab' => 'Applicant Information']
+            'tab' => 'Applicant Information',
+            'wrapperAttributes' => [
+                        'class' => 'form-group col-md-6'
+                    ],]
             , 'update/create/both');
 
         $this->crud->addField(
             ['name' => 'residentialaddress',
             'label' => 'Residential Address in the Philippines',
             'tab' => 'Applicant Information',
-            'type' => 'address']
+            'type' => 'address',
+            'wrapperAttributes' => [
+                        'class' => 'form-group col-md-12'
+                    ],]
             , 'update/create/both');
 
         $this->crud->addField(
             ['name' => 'email',
             'label' => 'E-mail Address',
             'tab' => 'Applicant Information',
-            'type' => 'email']
+            'type' => 'email',
+            'wrapperAttributes' => [
+                        'class' => 'form-group col-md-6'
+                    ],]
             , 'update/create/both');
 
         $this->crud->addField(
             ['name' => 'religion',
             'id' => 'findme',
-            'tab' => 'Applicant Information']
+            'tab' => 'Applicant Information',
+            'wrapperAttributes' => [
+                        'class' => 'form-group col-md-6'
+                    ],]
             , 'update/create/both');
 
         $this->crud->addField(
@@ -135,7 +166,7 @@ class StudentCrudController extends CrudController
             'type' => 'checkall',
             'tab' => 'Applicant Information',
              'attributes' => [
-                    'disabled' => 'disabled']]
+                    'id' => 'livingid']]
             , 'update/create/both');
 
         $this->crud->addField(
@@ -159,12 +190,18 @@ class StudentCrudController extends CrudController
         $this->crud->addField(
             ['name' => 'readingwriting', 
             'tab' => 'Applicant Information',
-            'type' => 'enum']
+            'type' => 'enum',
+            'wrapperAttributes' => [
+                        'class' => 'form-group col-md-6'
+                    ],]
             , 'update/create/both');
         $this->crud->addField(
             ['name' => 'verbalproficiency', 
             'tab' => 'Applicant Information',
-            'type' => 'enum']
+            'type' => 'enum',
+            'wrapperAttributes' => [
+                        'class' => 'form-group col-md-6'
+                    ],]
             , 'update/create/both');
         $this->crud->addField(
             [   // Table
@@ -208,7 +245,7 @@ class StudentCrudController extends CrudController
                 'min' => 1 // minimum rows allowed in the table
             ],'update/create/both'
         );
-
+        // custom field type -------------- code is not flexible. 
         $this->crud->addField(
                 [
                     'tab'   => 'Applicant Information',
@@ -223,7 +260,7 @@ class StudentCrudController extends CrudController
                     //'inline'      => false, // show the radios all on the same line?
                 ]
             , 'update/create/both');
-
+        // custom field type -------------- code is not flexible. 
         $this->crud->addField(
             ['name' => 'remedialhelpexplantion',
             'label' => 'Please explain and provide latest testing results.',
@@ -239,48 +276,79 @@ class StudentCrudController extends CrudController
             'type' => 'checklistcustom',
             'tab' => 'Applicant Information',
             'attributes' => [
-                    'id' => 'specialtalentid']]
+                    'id' => 'specialtalentid',]]
             , 'update/create/both');
 
         $this->crud->addField(
             [   // Custom Field
                 'name' => 'otherinfo',
                 'label' => 'Is there any other information you think the teacher should know about your child?',
-                'type' => 'ifyesdynamic',
+                'type' => 'toggle',
                 'tab' => 'Applicant Information',
-                'attributes' => [
-                    'id' => 'otherinfoid',
-                    'placeholder' => 'Please specify here',
-                ]
+                'options' => [
+                    1 => 'Yes',
+                    0 => 'No'
+                ],
+                'hide_when' => [
+                    0 => ['otherinfofield'],
+                    ],
+                'default' => 0,
+                'wrapperAttributes' => [
+                        'class' => 'form-group col-md-12'
+                ],
+                
             ],'update/create/both');
+
+        $this->crud->addField(
+            [
+                'name' => 'otherinfofield',
+                'tab' => 'Applicant Information',
+                'label' => 'Please explain'
+            ]
+        );
 
         $this->crud->addField(
             [   // Custom Field
-                'name' => 'disciplinaryproblemexplanation',
+                'name' => 'disciplinaryproblem',
                 'label' => 'Has your child ever been asked to leave school because of any behavioral/disciplinary problems?',
-                'type' => 'ifyesdynamic',
+                'type' => 'toggle',
                 'tab' => 'Applicant Information',
-                'attributes' => [
-                    'id' => 'disciplinaryproblemid',
-                    'placeholder' => 'Please explain',
-                ]
+                'options' => [
+                    1 => 'Yes',
+                    0 => 'No'
+                ],
+                'hide_when' => [
+                    0 => ['disciplinaryproblemexplanation'],
+                    ],
+                'default' => 0,
+                
+                
             ],'update/create/both');
 
         $this->crud->addField(
-            [   // Table
+            [
+                'name' => 'disciplinaryproblemexplanation',
                 'tab' => 'Applicant Information',
-                'name' => 'mojorlanguages',
-                'label' => 'Major language(s) used at home',
-                'type' => 'table',
-                'entity_singular' => 'Line', // used on the "Add X" button
-                'columns' => [
-                    'languages' => 'List below'
-                ],
-                'max' => 10, // maximum rows allowed in the table
-                'min' => 1 // minimum rows allowed in the table
-            ],'update/create/both'
+                'label' => 'Please explain'
+            ]
         );
 
+
+        // $this->crud->addField( 
+        //     [   // Table
+        //         'tab' => 'Applicant Information',
+        //         'name' => 'mojorlanguages',
+        //         'label' => 'Major language(s) used at home',
+        //         'type' => 'table',
+        //         'entity_singular' => 'Line', // used on the "Add X" button
+        //         'columns' => [
+        //             'languages' => 'List below'
+        //         ],
+        //         'max' => 10, // maximum rows allowed in the table
+        //         'min' => 1 // minimum rows allowed in the table
+        //     ],'update/create/both'
+        // );
+        ///////////////////////////-----------------------------2nd tab
         $this->crud->addField(
             [   // Table
                 'tab' => "$tab2",
@@ -1013,6 +1081,30 @@ class StudentCrudController extends CrudController
                 ],  'update/create/both'
             );
 
+            $this->crud->addField([// image
+            'wrapperAttributes' => [
+                'class' => 'form-group col-md-6'
+             ],
+            'label' => "Parent Signature",
+            'name' => 'parentsignature',
+            'type' => 'image',
+            'upload' => true,
+            'crop' => true, // set to true to allow cropping, false to disable
+            'aspect_ratio' => 0, // ommit or set to 0 to allow any aspect ratio
+            // 'prefix' => 'uploads/images/profile_pictures/' // in case you only store the filename in the database, this text will be prepended to the database value
+            'tab' => "$tab3"
+            ], 'update/create/both');
+
+            $this->crud->addField(
+            ['wrapperAttributes' => [
+                'class' => 'form-group col-md-6'
+            ],
+             'name' => 'date2', 
+            'tab' => "$tab3",]
+            , 'update/create/both');
+
+
+
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
@@ -1020,6 +1112,7 @@ class StudentCrudController extends CrudController
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
+        $this->crud->setColumns(['firstname','lastname','middlename','gender',]);
 
         // ------ CRUD BUTTONS
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;

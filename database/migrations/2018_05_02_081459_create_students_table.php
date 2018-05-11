@@ -16,14 +16,14 @@ class CreateStudentsTable extends Migration
             $table->increments('id');
             $table->date('application');
             $table->enum('level', ['PRESCHOOL', 'GRADESCHOOL', 'MIDDLE SCHOOL', 'HIGH SCHOOL']);
-            $table->string('photo'); //notsure
+            $table->longText('photo')->nullable(); //notsure
             $table->string('firstname');
             $table->string('lastname');
             $table->string('middlename');
             $table->enum('gender', ['Male', 'Female']);
             $table->date('birthdate');
             $table->string('citizenship');
-            $table->string('passport');
+            //$table->string('passport');
             $table->longText('birthplace');
             $table->longText('residentialaddress');
             $table->string('email');
@@ -34,15 +34,16 @@ class CreateStudentsTable extends Migration
             $table->enum('readingwriting', ['Good', 'Fair', 'Limited', 'None']);
             $table->enum('verbalproficiency', ['Good', 'Fair', 'Limited', 'None']);
             $table->longText('mojorlanguages');
-            $table->string('otherlanguages')->nullable();
+            $table->longText('otherlanguages')->nullable();
             $table->longText('classparticipation')->nullable();
-            $table->boolean('remedialhelp');
+            $table->boolean('remedialhelp')->nullable();
             $table->longText('remedialhelpexplantion')->nullable();
-            $table->longText('specialtalent');
-            $table->string('athletics')->nullable(); //may not be needed
-            $table->string('band')->nullable();//may not be needed
-            $table->string('string')->nullable();//may not be needed
-            $table->longText('otherinfo')->nullable();
+            $table->longText('specialtalent')->nullable(); //remove nullable ----testss
+            //$table->string('athletics')->nullable(); //may not be needed
+            //$table->string('band')->nullable();//may not be needed
+            //$table->string('string')->nullable();//may not be needed
+            $table->boolean('otherinfo')->nullable();
+            $table->longText('otherinfofield')->nullable(); //new field 
             $table->boolean('disciplinaryproblem')->nullable(); //may not be needed
             $table->longText('disciplinaryproblemexplanation')->nullable();
             //-----------------
@@ -55,28 +56,28 @@ class CreateStudentsTable extends Migration
             $table->string('fatherlastname');
             $table->string('fathermiddlename');
             $table->string('fathercitizenship');
-            $table->string('fatherpassport');
+            //$table->string('fatherpassport');//may mot be needed // ----not needed
             $table->string('fathervisastatus');
             $table->longText('fatheremployer');
             $table->string('fatherofficenumber');
             $table->longText('fatherdegree');
             $table->longText('fatherschool');
             $table->string('fathernumber');
-            $table->boolean('fatherreceivetext');
+            $table->boolean('fatherreceivetext')->nullable();
             //-------------------------------------------------------------------
             $table->enum('mother', ['Mother', 'Step-mother', 'Legal Guardian']);
             $table->string('motherfirstname');
             $table->string('motherlastname');
             $table->string('mothermiddlename');
             $table->string('mothercitizenship');
-            $table->string('motherpassport'); //may mot be needed // ----not needed
+            //$table->string('motherpassport'); //may mot be needed // ----not needed
             $table->string('mothervisastatus');
             $table->longText('motheremployer');
             $table->string('motherofficenumber');
             $table->longText('motherdegree');
             $table->longText('motherschool');
             $table->string('mothernumber');
-            $table->boolean('motherreceivetext');
+            $table->boolean('motherreceivetext')->nullable();
             //------------------------------------------------------------------
 
             $table->longText('emergencycontactname');
@@ -85,38 +86,38 @@ class CreateStudentsTable extends Migration
             $table->longText('emergencyaddress');
             $table->string('emergencyhomephone');
 
-            $table->boolean('isagree');//not sure
-            $table->boolean('formiscorrect');//not sure
+            $table->boolean('isagree')->nullable();//not sure
+            $table->boolean('formiscorrect')->nullable();//not sure
 
-            $table->string('fathersignature');
-            $table->string('mothersignature');
+            $table->longText('fathersignature')->nullable();
+            $table->longText('mothersignature')->nullable();
             $table->date('date');
             //------------------3rd page
             $table->string('schoolyear');
-            $table->boolean('asthma');
-            $table->boolean('asthmainhaler');
-            $table->boolean('allergy');
+            $table->boolean('asthma')->nullable();
+            $table->boolean('asthmainhaler')->nullable();
+            $table->boolean('allergy')->nullable();
             $table->longText('allergies')->nullable();
             $table->longText('allergyreaction')->nullable();
-            $table->boolean('drugallergy');
+            $table->boolean('drugallergy')->nullable();
             $table->longText('drugallergies')->nullable();
             $table->longText('drugallergyreaction')->nullable();
-            $table->boolean('visionproblem');
+            $table->boolean('visionproblem')->nullable();
             $table->longText('visionproblemdescription')->nullable();
-            $table->boolean('hearingproblem');
+            $table->boolean('hearingproblem')->nullable();
             $table->longText('hearingproblemdescription')->nullable();
             $table->longText('healthcondition')->nullable();
             $table->longText('hospitalized')->nullable();
             $table->longText('injuries')->nullable();
-            $table->boolean('medication');
+            $table->boolean('medication')->nullable();
             $table->longText('medications')->nullable();
-            $table->boolean('schoolhourmedication');
+            $table->boolean('schoolhourmedication')->nullable();
             //---------------------
-            $table->boolean('firstaidd');
-            $table->boolean('emergencycare');
-            $table->boolean('hospitalemergencycare');
-            $table->boolean('oralmedication');
-            $table->string('parentsignature');
+            $table->boolean('firstaidd')->nullable();
+            $table->boolean('emergencycare')->nullable();
+            $table->boolean('hospitalemergencycare')->nullable();
+            $table->boolean('oralmedication')->nullable();
+            $table->longText('parentsignature')->nullable();
             $table->date('date2');
 
             $table->timestamps();
