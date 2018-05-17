@@ -40,11 +40,20 @@ class StudentCrudController extends CrudController
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
-        $this->crud->addField(
-            ['name' => 'application', 
+        
+
+        $this->crud->addField([   // date_picker
+            'name' => 'application',
+            'type' => 'date_picker',
+            'label' => 'Application',
             'tab' => 'Applicant Information',
-            'type' => 'date']
-            , 'update/create/both');
+            // optional:
+            'date_picker_options' => [
+                'todayBtn' => true,
+                'format' => 'dd-mm-yyyy',
+                'language' => 'fr'
+            ],
+        ],'update/create/both');
 
         $this->crud->addField(
             ['name' => 'level', 
@@ -100,14 +109,22 @@ class StudentCrudController extends CrudController
                     ],]
             , 'update/create/both');
 
-        $this->crud->addField(
-            ['name' => 'birthdate',
+
+        $this->crud->addField([   // date_picker
+            'name' => 'birthdate',
+            'type' => 'date_picker',
             'label' => 'Date of Birth',
             'tab' => 'Applicant Information',
+            // optional:
+            'date_picker_options' => [
+                'todayBtn' => true,
+                'format' => 'dd-mm-yyyy',
+                'language' => 'fr'
+            ],
             'wrapperAttributes' => [
                         'class' => 'form-group col-md-4'
-                    ],]
-            , 'update/create/both');
+            ],
+        ],'update/create/both');
 
         $this->crud->addField(
             ['name' => 'citizenship', 
@@ -239,32 +256,54 @@ class StudentCrudController extends CrudController
                 'type' => 'table',
                 'entity_singular' => 'Line', // used on the "Add X" button
                 'columns' => [
-                    'languages' => 'List below'
+                    'participation' => 'List below'
                 ],
                 'max' => 10, // maximum rows allowed in the table
                 'min' => 1 // minimum rows allowed in the table
             ],'update/create/both'
         );
         // custom field type -------------- code is not flexible. 
+        // $this->crud->addField(
+        //         [
+        //             'tab'   => 'Applicant Information',
+        //             'name'        => 'remedialhelp', // the name of the db column
+        //             'label'       => 'Did your child receive any remedial help in previous school? (i.e., Remedial Program, Special Education, Speech Therapy, IEP, IDR, etc.)', // the input label
+        //             'type'        => 'radioIfYes',
+        //             'options'     => [ // the key will be stored in the db, the value will be shown as label; 
+        //                                 1 => "Yes",
+        //                                 0 => "No"
+        //                             ],
+        //             // optional
+        //             //'inline'      => false, // show the radios all on the same line?
+        //         ]
+        //     , 'update/create/both');
+
         $this->crud->addField(
-                [
-                    'tab'   => 'Applicant Information',
-                    'name'        => 'remedialhelp', // the name of the db column
-                    'label'       => 'Did your child receive any remedial help in previous school? (i.e., Remedial Program, Special Education, Speech Therapy, IEP, IDR, etc.)', // the input label
-                    'type'        => 'radioIfYes',
-                    'options'     => [ // the key will be stored in the db, the value will be shown as label; 
-                                        0 => "Yes",
-                                        1 => "No"
-                                    ],
-                    // optional
-                    //'inline'      => false, // show the radios all on the same line?
-                ]
-            , 'update/create/both');
+            [   // Custom Field
+                'name' => 'remedialhelp',
+                'label' => 'Did your child receive any remedial help in previous school? (i.e., Remedial Program, Special Education, Speech Therapy, IEP, IDR, etc.)',
+                'type' => 'toggle',
+                'tab' => 'Applicant Information',
+                'options' => [
+                    1 => 'Yes',
+                    0 => 'No'
+                ],
+                'hide_when' => [
+                    0 => ['remedialhelpexplantion'],
+                    ],
+                'default' => 0,
+                'wrapperAttributes' => [
+                        'class' => 'form-group col-md-12'
+                ],
+                
+            ],'update/create/both');
+
+
+
         // custom field type -------------- code is not flexible. 
         $this->crud->addField(
             ['name' => 'remedialhelpexplantion',
             'label' => 'Please explain and provide latest testing results.',
-            'type' => 'ifyes',
             'tab' => 'Applicant Information',
             'attributes' => [
                     'placeholder' => 'Explanation here']]
@@ -445,6 +484,7 @@ class StudentCrudController extends CrudController
 
         $this->crud->addField([
            'name' => 'fatherofficenumber',
+           'type' => 'number',
            'label' => 'Office Number',
            'tab' => "$tab2",
            'wrapperAttributes' => [
@@ -561,6 +601,7 @@ class StudentCrudController extends CrudController
 
         $this->crud->addField([
            'name' => 'motherofficenumber',
+           'type' => 'number',
            'label' => 'Office Number',
            'tab' => "$tab2",
            'wrapperAttributes' => [
@@ -635,6 +676,7 @@ class StudentCrudController extends CrudController
             $this->crud->addField(
             ['name' => 'emergencymobilenumber',
             'label' => 'Mobile Number',
+            'type' => 'number',
             'tab' => "$tab2",
             'wrapperAttributes' => [
                 'class' => 'form-group col-md-6'
@@ -653,6 +695,7 @@ class StudentCrudController extends CrudController
             $this->crud->addField(
             ['name' => 'emergencyhomephone',
             'label' => 'Home Phone',
+            'type' => 'number',
             'tab' => "$tab2",
             'wrapperAttributes' => [
                 'class' => 'form-group col-md-6'
@@ -721,6 +764,8 @@ class StudentCrudController extends CrudController
                 'class' => 'form-group col-md-9'
            ]]
             , 'update/create/both');
+
+
             //------------------------------------
 
             $this->crud->addField(
@@ -920,42 +965,110 @@ class StudentCrudController extends CrudController
             ]
             , 'update/create/both');
 
+            
+
             $this->crud->addField(
-            [   // Custom Field
-                'name' => 'healthcondition',
+            [
                 'label' => '2. Any other health condition that the school should be aare of (e.g epilepsy, diabetes, etc.)',
-                'type' => 'ifyesdynamic',
                 'tab' => "$tab3",
-                'attributes' => [
-                    'id' => 'healthconditionid',
-                    'placeholder' => 'Please specify',
-                ]
-            ],'update/create/both');
-
+                'name' => 'hashealthcondition',
+                'type' => 'toggle',
+                'inline' => false,
+                'options' => [
+                    1 => 'Yes',
+                    0 => 'No'
+                ],
+                'hide_when' => [
+                    0 => ['healthcondition'],
+                    ],
+                'default' => 0,
+                'wrapperAttributes' => [
+                        'class' => 'form-group col-md-12'
+                ],
+            ]);
 
             $this->crud->addField(
-            [   // Custom Field
-                'name' => 'hospitalized',
+            ['name' => 'healthcondition',
+            'label' => 'Please specify or explain',
+            'tab' => "$tab3",
+            'wrapperAttributes' => [
+                'class' => 'form-group col-md-12'
+            ],
+            'attributes' => [
+                'placeholder' => '',
+            ],
+            ]
+            , 'update/create/both');
+
+            $this->crud->addField(
+            [
                 'label' => '3. Has your child recently been hospitalized?',
-                'type' => 'ifyesdynamic',
                 'tab' => "$tab3",
-                'attributes' => [
-                    'id' => 'hospitalizedid',
-                    'placeholder' => 'when? why?',
-                ]
-            ],'update/create/both');
+                'name' => 'ishospitalized',
+                'type' => 'toggle',
+                'inline' => false,
+                'options' => [
+                    1 => 'Yes',
+                    0 => 'No'
+                ],
+                'hide_when' => [
+                    0 => ['hospitalized'],
+                    ],
+                'default' => 0,
+                'wrapperAttributes' => [
+                        'class' => 'form-group col-md-12'
+                ],
+            ]);
+
+
 
             $this->crud->addField(
-            [   // Custom Field
-                'name' => 'injuries',
+            ['name' => 'hospitalized',
+            'label' => 'when? why?',
+            'tab' => "$tab3",
+            'wrapperAttributes' => [
+                'class' => 'form-group col-md-12'
+            ],
+            'attributes' => [
+                'placeholder' => '',
+            ],
+            ]
+            , 'update/create/both');
+
+            $this->crud->addField(
+            [
                 'label' => '4. Has your child recently had any serious injuries?',
-                'type' => 'ifyesdynamic',
                 'tab' => "$tab3",
-                'attributes' => [
-                    'id' => 'injuriesid',
-                    'placeholder' => 'when? why?',
-                ]
-            ],'update/create/both');
+                'name' => 'hadinjuries',
+                'type' => 'toggle',
+                'inline' => false,
+                'options' => [
+                    1 => 'Yes',
+                    0 => 'No'
+                ],
+                'hide_when' => [
+                    0 => ['injuries'],
+                    ],
+                'default' => 0,
+                'wrapperAttributes' => [
+                        'class' => 'form-group col-md-12'
+                ],
+            ]);
+
+            
+
+            $this->crud->addField(
+            ['name' => 'injuries',
+            'label' => 'when? why?',
+            'tab' => "$tab3",
+            'wrapperAttributes' => [
+                'class' => 'form-group col-md-12'
+            ],
+            'attributes' => [
+                'placeholder' => '',
+            ],
+            ]
+            , 'update/create/both');
 
             $this->crud->addField(
             [
@@ -1090,7 +1203,7 @@ class StudentCrudController extends CrudController
             'type' => 'image',
             'upload' => true,
             'crop' => true, // set to true to allow cropping, false to disable
-            'aspect_ratio' => 0, // ommit or set to 0 to allow any aspect ratio
+            'aspect_ratio' =>    0, // ommit or set to 0 to allow any aspect ratio
             // 'prefix' => 'uploads/images/profile_pictures/' // in case you only store the filename in the database, this text will be prepended to the database value
             'tab' => "$tab3"
             ], 'update/create/both');
@@ -1112,7 +1225,8 @@ class StudentCrudController extends CrudController
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
-        $this->crud->setColumns(['firstname','lastname','middlename','gender',]);
+            
+        $this->crud->setColumns(['firstname','lastname','middlename','gender','otherinfo',]);
 
         // ------ CRUD BUTTONS
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;

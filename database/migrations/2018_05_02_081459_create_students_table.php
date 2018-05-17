@@ -15,7 +15,7 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
             $table->date('application');
-            $table->enum('level', ['PRESCHOOL', 'GRADESCHOOL', 'MIDDLE SCHOOL', 'HIGH SCHOOL']);
+            $table->enum('level', ['','PRESCHOOL', 'GRADESCHOOL', 'MIDDLE SCHOOL', 'HIGH SCHOOL']);
             $table->longText('photo')->nullable(); //notsure
             $table->string('firstname');
             $table->string('lastname');
@@ -24,7 +24,7 @@ class CreateStudentsTable extends Migration
             $table->date('birthdate');
             $table->string('citizenship');
             //$table->string('passport');
-            $table->longText('birthplace');
+            $table->string('birthplace');
             $table->longText('residentialaddress');
             $table->string('email');
             $table->string('religion');
@@ -106,8 +106,11 @@ class CreateStudentsTable extends Migration
             $table->longText('visionproblemdescription')->nullable();
             $table->boolean('hearingproblem')->nullable();
             $table->longText('hearingproblemdescription')->nullable();
+            $table->boolean('hashealthcondition')->nullable();
             $table->longText('healthcondition')->nullable();
+            $table->boolean('ishospitalized')->nullable();
             $table->longText('hospitalized')->nullable();
+            $table->boolean('hadinjuries')->nullable();
             $table->longText('injuries')->nullable();
             $table->boolean('medication')->nullable();
             $table->longText('medications')->nullable();
