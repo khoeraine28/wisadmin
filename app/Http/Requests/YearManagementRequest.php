@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CurriculumManagementRequest extends FormRequest
+class YearManagementRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,6 @@ class CurriculumManagementRequest extends FormRequest
     {
         return [
             // 'name' => 'required|min:5|max:255'
-             'curriculum_name' => 'required|min:5|max:255'
         ];
     }
 

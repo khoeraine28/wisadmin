@@ -14,6 +14,12 @@
 	    <li>
 			<a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/subject_management') }}"><span>Subject Management</span></a>
 	    </li>
+	    <li>
+			<a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/year_management') }}"><span>Year Management</span></a>
+	    </li>
+	    <li>
+			<a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/section_management') }}"><span>Section Management</span></a>
+	    </li>
   	</ul>
 </li>
 

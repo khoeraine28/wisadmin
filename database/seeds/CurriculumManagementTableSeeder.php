@@ -12,49 +12,22 @@ class CurriculumManagementTableSeeder extends Seeder
     public function run()
     {
 		DB::table('curriculum_managements')->insert([
-            'curriculum_date' => "January 1"
+            'curriculum_name' => "ENGLISH"
         ]);
         DB::table('curriculum_managements')->insert([
-            'curriculum_date' => "January 2"
+            'curriculum_name' => "MAPEH"
         ]);
         DB::table('curriculum_managements')->insert([
-            'curriculum_date' => "January 3"
+            'curriculum_name' => "FILIPINO"
         ]);
         DB::table('curriculum_managements')->insert([
-            'curriculum_date' => "January 4"
+            'curriculum_name' => "WEB DEVELOPMENT"
         ]);
         DB::table('curriculum_managements')->insert([
-            'curriculum_date' => "January 5"
+            'curriculum_name' => "COMPUTER PROGRAMMING"
         ]);
         DB::table('curriculum_managements')->insert([
-            'curriculum_date' => "February 1"
-        ]);
-        DB::table('curriculum_managements')->insert([
-            'curriculum_date' => "February 2"
-        ]);
-        DB::table('curriculum_managements')->insert([
-            'curriculum_date' => "February 3"
-        ]);
-        DB::table('curriculum_managements')->insert([
-            'curriculum_date' => "February 4"
-        ]);
-        DB::table('curriculum_managements')->insert([
-            'curriculum_date' => "February 5"
-        ]);
-        DB::table('curriculum_managements')->insert([
-            'curriculum_date' => "March 1"
-        ]);
-        DB::table('curriculum_managements')->insert([
-            'curriculum_date' => "March 2"
-        ]);
-        DB::table('curriculum_managements')->insert([
-            'curriculum_date' => "March 3"
-        ]);
-        DB::table('curriculum_managements')->insert([
-            'curriculum_date' => "March 4"
-        ]);
-        DB::table('curriculum_managements')->insert([
-            'curriculum_date' => "March 5"
+            'curriculum_name' => "KUNG FU"
         ]);
     }
 }

@@ -25,13 +25,14 @@
     @include('crud::inc.field_wrapper_attributes') 
     >
 
-    <label>{!! $field['label'] !!}</label>
+    <label>{!! $field['label'] !!} </label>
+    <label>Total : <% sum(items) %> Unit(s)</label>
     @include('crud::inc.field_translatable_icon')
 
     <input class="array-json" type="hidden" id="{{ $field['name'] }}" name="{{ $field['name'] }}">
 
     <div class="array-container form-group">
-
+    
         <table 
             class="table table-bordered table-striped m-b-0" 
             ng-init="field = '#{{ $field['name'] }}'; items = {{ $items }}; max = {{$max}}; min = {{$min}}; maxErrorTitle = '{{trans('backpack::crud.table_cant_add', ['entity' => $item_name])}}'; maxErrorMessage = '{{trans('backpack::crud.table_max_reached', ['max' => $max])}}'"
@@ -78,13 +79,12 @@
                         <button ng-hide="min > -1 && $index < min" class="btn btn-sm btn-default" type="button" ng-click="removeItem(item);"><span class="sr-only">delete item</span><i class="fa fa-trash" role="presentation" aria-hidden="true"></i></button>
                     </td>
                 </tr>
-
             </tbody>
-
+                
         </table>
 
         <div class="array-controls btn-group m-t-10">
-            <button ng-if="max == -1 || items.length < max" class="btn btn-sm btn-default" type="button" ng-click="addItem()"><i class="fa fa-plus"></i> Adiciionar item ({{ $item_name }})</button>
+            <button ng-if="max == -1 || items.length < max" class="btn btn-sm btn-default" type="button" ng-click="addItem()"><i class="fa fa-plus"></i> Add {{ $item_name }}</button>
         </div>
 
     </div>
@@ -94,7 +94,6 @@
         <p class="help-block">{!! $field['hint'] !!}</p>
     @endif
 </div>
-
 {{-- ########################################## --}}
 {{-- Extra CSS and JS for this particular field --}}
 {{-- If a field type is shown multiple times on a form, the CSS and JS will only be loaded once --}}
@@ -103,7 +102,7 @@
     {{-- FIELD CSS - will be loaded in the after_styles section --}}
     @push('crud_fields_styles')
     {{-- @push('crud_fields_styles')
-        {{-- YOUR CSS HERE --}}
+        {{- YOUR CSS HERE --}}
     @endpush
 
     {{-- FIELD JS - will be loaded in the after_scripts section --}}
@@ -113,6 +112,9 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.14.3/sortable.min.js"></script>
         <script>
+            
+
+
 
             window.angularApp = window.angularApp || angular.module('backPackTableApp', ['ui.sortable'], function($interpolateProvider){
                 $interpolateProvider.startSymbol('<%');
@@ -120,12 +122,50 @@
             });
 
 
-            window.angularApp.controller('tableController', function($scope){
+            window.angularApp.controller('tableController', function($scope, $rootScope){
 
+                $scope.datos = {!! json_encode($subject_management) !!};
+                // $rootScope.items = $scope;
+                // console.log($rootScope.datos);
                 $scope.sortableOptions = {
                     handle: '.sort-handle'
                 };
 
+                $scope.sum = function(list) {
+                    // console.log($scope.items);
+                    var total=0;
+
+                    angular.forEach($scope.items, function(item){
+                        if(typeof item.unit !== NaN) {
+                            total+= parseInt(item.unit);
+                        }
+                    });
+                    return total;
+                }
+
+                $scope.changeSubject = function() {
+                    console.log("a = " , this.item);
+                    var selectedSubject = this.item.subject;
+                    var dynamicDesc, dynamicUnit;
+                    
+                    angular.forEach($scope.datos, function(value, key) {
+
+                        console.log("val = " , value);
+
+                        if(value.curriculum_id == selectedSubject) {
+                        // console.log("val = " , value);
+                            // this.item.description = value.subject_description;
+                            dynamicDesc = value.subject_description;
+                            dynamicUnit = value.no_unit;
+                        }
+                    });
+
+                    this.item.description = dynamicDesc;
+                    this.item.unit = dynamicUnit;
+                    dynamicDesc = null;
+                    dynamicUnit = null;
+                }
+        
                 $scope.addItem = function(){
 
                     if( $scope.max > -1 ){
@@ -154,7 +194,6 @@
                 }
                 
                 $scope.$watch('items', function(a, b){
-
                     if( $scope.min > -1 ){
                         while($scope.items.length < $scope.min){
                             $scope.addItem();
@@ -179,10 +218,11 @@
                     }
                 }
             });
-            window.angularApp.directive('postRender', function($timeout) {
+
+            window.angularApp.directive('postRender', function($timeout, $rootScope) {
                 return {
                    link: function(scope, element, attr) {
-                      $timeout(function() {
+                      $timeout(function() { 
                          $('.select2').each(function (i, obj) {
                                 if (!$(obj).data("select2"))
                                 {
@@ -207,37 +247,7 @@
 
     @endpush
 @endif
-{{-- End of Extra CSS and JS --}}
-{{-- ########################################## --}}
-child_select.blade.php
 
-<!-- select2 -->
-<div clas="col-md-12">
-
-    <?php $entity_model = $crud->model; ?>
-    <select 
-        ng-model="item.{{ $field['name'] }}"
-        @include('crud::inc.field_attributes', ['default_class' =>  'form-control select2'])
-        >
-            <option value="">-</option>
-
-            @if (isset($field['model']))
-                @foreach ($field['model']::all() as $connected_entity_entry)
-                    <option value="{{ $connected_entity_entry->getKey() }}"
-                    >{{ $connected_entity_entry->{$field['attribute']} }}</option>
-                @endforeach
-            @endif
-    </select>
-
-    {{-- HINT --}}
-    @if (isset($field['hint']))
-        <p class="help-block">{!! $field['hint'] !!}</p>
-    @endif
-</div>
-
-{{-- ########################################## --}}
-{{-- Extra CSS and JS for this particular field --}}
-{{-- If a field type is shown multiple times on a form, the CSS and JS will only be loaded once --}}
 @if (!$crud->child_resource_included['select'])
 
     {{-- FIELD CSS - will be loaded in the after_styles section --}}

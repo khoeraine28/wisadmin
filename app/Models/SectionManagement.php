@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class SubjectManagement extends Model
+class SectionManagement extends Model
 {
     use CrudTrait;
 
@@ -15,14 +15,13 @@ class SubjectManagement extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'subject_managements';
+    protected $table = 'section_managements';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['curriculum_id', 'subject_code', 'subject_description', 'no_unit'];
+    protected $fillable = ['section', 'subject_details'];
     // protected $hidden = [];
     // protected $dates = [];
-    protected $appends = array('subject');
 
     /*
     |--------------------------------------------------------------------------
@@ -36,7 +35,7 @@ class SubjectManagement extends Model
     |--------------------------------------------------------------------------
     */
     public function curriculum(){
-        return $this->hasOne('App\Models\CurriculumManagement', 'id');
+        return $this->hasOne('App\Models\CurriculumManagement');
     }
     /*
     |--------------------------------------------------------------------------
@@ -49,10 +48,7 @@ class SubjectManagement extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-    public function getSubjectAttribute($value) 
-    {
-        return "HEEEE";
-    }
+
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

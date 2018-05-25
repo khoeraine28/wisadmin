@@ -5,21 +5,22 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\SubjectManagementRequest as StoreRequest;
-use App\Http\Requests\SubjectManagementRequest as UpdateRequest;
+use App\Http\Requests\YearManagementRequest as StoreRequest;
+use App\Http\Requests\YearManagementRequest as UpdateRequest;
 
-class SubjectManagementCrudController extends CrudController
+class YearManagementCrudController extends CrudController
 {
     public function setup()
     {
+
         /*
         |--------------------------------------------------------------------------
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\SubjectManagement');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/subject_management');
-        $this->crud->setEntityNameStrings('Subject Management', 'Subject Management');
+        $this->crud->setModel('App\Models\YearManagement');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/year_management');
+        $this->crud->setEntityNameStrings('Year Management', 'Year Management');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,34 +29,7 @@ class SubjectManagementCrudController extends CrudController
         */
 
         $this->crud->setFromDb();
-        $this->crud->addField([
-           'label' => "Curriculum",
-           'type' => 'select',
-           'name' => 'curriculum_id', // the db column for the foreign key
-           'entity' => 'curriculum', // the method that defines the relationship in your Model
-           'attribute' => 'curriculum_name', // foreign key attribute that is shown to user
-           'model' => "App\Models\CurriculumManagement", // foreign key model
-           // 'pivot' => true,
-        ]);
 
-        $this->crud->addField([
-            'label' => 'No. Unit',
-            'type' => 'number',
-            'name' => 'no_unit',
-            'attributes' => ["min" => 0, "max" => 100],
-        ]);
-
-        $this->crud->addColumn([
-            // 1-n relationship
-           'label' => "Curriculum", // Table column heading
-           'type' => "select",
-           'name' => 'curriculum_id', // the column that contains the ID of that connected entity;
-           'entity' => 'curriculum', // the method that defines the relationship in your Model
-           'attribute' => "curriculum_name", // foreign key attribute that is shown to user
-           'model' => "App\Models\CurriculumManagement", // foreign key model
-        ]);
-
-        // $this->crud->addColumns(['curriculum']);
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');

@@ -19,7 +19,7 @@ class CurriculumManagement extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['curriculum_date'];
+    protected $fillable = ['curriculum_name'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -34,8 +34,8 @@ class CurriculumManagement extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function subjectManagement(){
-        return $this->hasOne('App\Models\SubjectManagement');
+    public function subject(){
+        return $this->belongsTo('App\Models\SubjectManagement');
     }
     /*
     |--------------------------------------------------------------------------

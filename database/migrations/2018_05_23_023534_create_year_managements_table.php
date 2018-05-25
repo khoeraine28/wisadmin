@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCurriculumManagementsTable extends Migration
+class CreateYearManagementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateCurriculumManagementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('curriculum_managements', function (Blueprint $table) {
+        Schema::create('year_managements', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('curriculum_name');
+            $table->string('year');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ class CreateCurriculumManagementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('curriculum_managements');
+        Schema::dropIfExists('year_managements');
     }
 }
