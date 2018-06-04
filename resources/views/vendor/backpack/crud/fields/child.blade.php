@@ -84,7 +84,7 @@
         </table>
 
         <div class="array-controls btn-group m-t-10">
-            <button ng-if="max == -1 || items.length < max" class="btn btn-sm btn-default" type="button" ng-click="addItem()"><i class="fa fa-plus"></i> Adiciionar item ({{ $item_name }})</button>
+            <button ng-if="max == -1 || items.length < max" class="btn btn-sm btn-default" type="button" ng-click="addItem()"><i class="fa fa-plus"></i> {{ $item_name }}</button>
         </div>
 
     </div>
@@ -209,25 +209,15 @@
 @endif
 {{-- End of Extra CSS and JS --}}
 {{-- ########################################## --}}
-child_select.blade.php
+<div class="col-md-12">
+    <hr>
+</div>
+<div class="col-md-5 col-md-offset-7">
+    <b>Total:</b><input style="border: 1px solid #d2d6de;padding: 5px; margin: 5px" readonly="readonly" type="text" id="total">
+</div>
 
 <!-- select2 -->
-<div clas="col-md-12">
 
-    <?php $entity_model = $crud->model; ?>
-    <select 
-        ng-model="item.{{ $field['name'] }}"
-        @include('crud::inc.field_attributes', ['default_class' =>  'form-control select2'])
-        >
-            <option value="">-</option>
-
-            @if (isset($field['model']))
-                @foreach ($field['model']::all() as $connected_entity_entry)
-                    <option value="{{ $connected_entity_entry->getKey() }}"
-                    >{{ $connected_entity_entry->{$field['attribute']} }}</option>
-                @endforeach
-            @endif
-    </select>
 
     {{-- HINT --}}
     @if (isset($field['hint']))
@@ -251,6 +241,42 @@ child_select.blade.php
     @push('crud_fields_scripts')
         <!-- include select2 js-->
         <script src="{{ asset('vendor/backpack/select2/select2.js') }}"></script>
+        <script type="text/javascript">
+            function UpdateTotal(){
+                var total = 0.0;
+                var inputs = document.getElementsByName("currency");
+                for(i=0;i<inputs.length;i++){
+                    if(!isNaN(parseFloat(inputs[i].value))){
+                        total = total + parseFloat(inputs[i].value);
+                    }
+                }
+                if(!isNaN(total)){
+                    document.getElementById('total').value = Math.round(total * 100) / 100;
+                }
+                
+            }
+            window.onload = function () {
+                var check = function(){
+                    var total = 0.0;
+                    var inputs = document.getElementsByName("currency");
+                    for(i=0;i<inputs.length;i++){
+                        if(!isNaN(parseFloat(inputs[i].value))){
+                            total = total + parseFloat(inputs[i].value);
+                        }
+                    }
+
+                    if(!isNaN(total)){
+                        document.getElementById('total').value = Math.round(total * 100) / 100;
+                    }
+                    else {
+                        setTimeout(check, 500); // check again in a second
+                    }
+                }
+
+                check();
+            }
+
+        </script>
     @endpush
 
     

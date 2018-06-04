@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+Route::get('/test', function () {
+    
+});
+
 Route::group([
     'prefix' => config('backpack.base.route_prefix', 'admin'),
     'middleware' => ['admin'],
@@ -22,5 +28,7 @@ Route::group([
 ], function() {
     // your CRUD resources and other admin routes here
     CRUD::resource('student', 'StudentCrudController');
+    CRUD::resource('misc', 'MiscCrudController');
     CRUD::resource('tag', 'TagCrudController');
+    Route::get('student/{students}/print', 'StudentPrintController@index');
 });
