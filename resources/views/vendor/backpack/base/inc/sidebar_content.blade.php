@@ -1,6 +1,5 @@
 <!-- This file is used to store sidebar items, starting with Backpack\Base 0.9.0 -->
 <li><a href="{{ backpack_url('dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
-<<<<<<< HEAD
 <li class="treeview">
   <a href="#"><i class="fa fa-key"></i> <span>Students</span> <i class="fa fa-angle-left pull-right"></i></a>
   <ul class="treeview-menu">
@@ -8,8 +7,6 @@
     <li><a href="{{ url('admin/misc') }}"><i class="fa fa-tag"></i> <span>Miscellaneous</span></a></li>
   </ul>
 </li>
-=======
-<li><a href="{{ url('admin/student') }}"><i class="fa fa-tag"></i> <span>Students</span></a></li>
 
 <li class="treeview">
   <a href="#"><i class="fa fa-tasks"></i> <span>System Management</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -32,6 +29,4 @@
   	</ul>
 </li>
 
-
->>>>>>> 07ad41e1e50b09dc8a8e4e99b84cee5eaffc38e4
 <li><a href='{{ url(config('backpack.base.route_prefix', 'admin') . '/setting') }}'><i class='fa fa-cog'></i> <span>Settings</span></a></li>
