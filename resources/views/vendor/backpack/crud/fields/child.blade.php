@@ -251,7 +251,7 @@
 
     @endpush
 @endif
-<<<<<<< HEAD
+
 {{-- End of Extra CSS and JS --}}
 {{-- ########################################## --}}
 <div class="col-md-12">
@@ -269,8 +269,7 @@
         <p class="help-block">{!! $field['hint'] !!}</p>
     @endif
 </div>
-=======
->>>>>>> 07ad41e1e50b09dc8a8e4e99b84cee5eaffc38e4
+
 
 @if (!$crud->child_resource_included['select'])
 
