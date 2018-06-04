@@ -12,35 +12,28 @@ class SubjectManagementTableSeeder extends Seeder
     public function run()
     {
         DB::table('subject_managements')->insert([
-            'curriculum_id' => "1",
-            'subject_code' => "ENG1",
-            'subject_description' => "English 1 - Parts of Speech",
+            'curriculum_id' => "2",
+            'subject_code' => "ICT 7",
+            'subject_description' => "Basic Computer & Applications",
             'no_unit' => "2",
         ]);
         DB::table('subject_managements')->insert([
             'curriculum_id' => "2",
-            'subject_code' => "BSCE 2",
-            'subject_description' => "BSCE 2",
+            'subject_code' => "ICT 8",
+            'subject_description' => "CSS and Basic Programming",
             'no_unit' => "3",
         ]);
         DB::table('subject_managements')->insert([
-            'curriculum_id' => "3",
-            'subject_code' => "FIL 3",
-            'subject_description' => "Filipino 3 - El filibusterismo",
+            'curriculum_id' => "2",
+            'subject_code' => "ICT 9",
+            'subject_description' => "Multimedia Arts",
             'no_unit' => "3",
         ]);
 
         DB::table('subject_managements')->insert([
-            'curriculum_id' => "4",
-            'subject_code' => "WEBDEV ",
-            'subject_description' => "Web Development",
-            'no_unit' => "4",
-        ]);
-
-        DB::table('subject_managements')->insert([
-            'curriculum_id' => "5",
-            'subject_code' => "ITFUND",
-            'subject_description' => "IT Fundamentals - Basic troubleshooting hardware and software",
+            'curriculum_id' => "2",
+            'subject_code' => "ICT 10",
+            'subject_description' => "Multimedia Arts",
             'no_unit' => "4",
         ]);
     }

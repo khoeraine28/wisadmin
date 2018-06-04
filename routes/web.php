@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::group([
@@ -28,4 +28,6 @@ Route::group([
     CRUD::resource('year_management', 'YearManagementCrudController');
     CRUD::resource('section_management', 'SectionManagementCrudController');
     CRUD::resource('tag', 'TagCrudController');
+
+    // Route::get('section_management/{id}/view', 'SectionManagementCrudController@View')->name('ViewSecion');
 });

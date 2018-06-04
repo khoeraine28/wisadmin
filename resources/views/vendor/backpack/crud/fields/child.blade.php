@@ -122,7 +122,7 @@
             });
 
 
-            window.angularApp.controller('tableController', function($scope, $rootScope){
+            window.angularApp.controller('tableController', function($scope){
 
                 $scope.datos = {!! json_encode($subject_management) !!};
                 // $rootScope.items = $scope;
@@ -142,28 +142,31 @@
                     });
                     return total;
                 }
-
+                var g;
                 $scope.changeSubject = function() {
                     console.log("a = " , this.item);
-                    var selectedSubject = this.item.subject;
-                    var dynamicDesc, dynamicUnit;
+                    var selectedSubject = this.item.subject_id;
+                    var dynamicDesc, dynamicUnit, dynamicCode;
                     
                     angular.forEach($scope.datos, function(value, key) {
 
-                        console.log("val = " , value);
-
-                        if(value.curriculum_id == selectedSubject) {
                         // console.log("val = " , value);
+
+                        if(value.id == selectedSubject) {
+                        console.log("val = " , value);
                             // this.item.description = value.subject_description;
                             dynamicDesc = value.subject_description;
                             dynamicUnit = value.no_unit;
+                            dynamicCode = value.subject_code
                         }
                     });
 
                     this.item.description = dynamicDesc;
                     this.item.unit = dynamicUnit;
+                    this.item.subj_code = dynamicCode;
                     dynamicDesc = null;
                     dynamicUnit = null;
+                    dynamicCode = null;
                 }
         
                 $scope.addItem = function(){

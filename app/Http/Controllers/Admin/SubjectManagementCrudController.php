@@ -39,6 +39,14 @@ class SubjectManagementCrudController extends CrudController
         ]);
 
         $this->crud->addField([
+            // 1-n relationship
+           'label' => "Price", // Table column heading
+           'type' => "number",
+           'name' => 'price', // the column that contains the ID of that connected entity;
+           'attributes' => ['placeholder' => '(optional)']
+        ]);
+
+        $this->crud->addField([
             'label' => 'No. Unit',
             'type' => 'number',
             'name' => 'no_unit',
@@ -54,6 +62,8 @@ class SubjectManagementCrudController extends CrudController
            'attribute' => "curriculum_name", // foreign key attribute that is shown to user
            'model' => "App\Models\CurriculumManagement", // foreign key model
         ]);
+
+
 
         // $this->crud->addColumns(['curriculum']);
         // ------ CRUD FIELDS

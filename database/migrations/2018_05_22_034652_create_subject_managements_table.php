@@ -19,6 +19,7 @@ class CreateSubjectManagementsTable extends Migration
             $table->string('subject_code');
             $table->string('subject_description');
             $table->integer('no_unit');
+            $table->double('price')->nullable();
             $table->timestamps();
         });
     }

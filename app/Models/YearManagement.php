@@ -28,7 +28,9 @@ class YearManagement extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
+    public function section () {
+        return $this->belongsTo('App\Models\SectionManagement');
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

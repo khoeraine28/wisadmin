@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Illuminate\Http\Request;
+
 use App\Models\SubjectManagement;
+use App\Models\SectionManagement;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\SectionManagementRequest as StoreRequest;
 use App\Http\Requests\SectionManagementRequest as UpdateRequest;
@@ -39,40 +42,62 @@ class SectionManagementCrudController extends CrudController
 
         $this->crud->child_resource_included = ['select' => false, 'number' => false];
         $this->crud->addField(
+            [
+                'label' => 'Curriculum',
+                'type' => 'select',
+                'name' => 'curriculum_id',
+                'store_in' => 'subject_details',
+                'entity' => 'curriculum',
+                'attribute' => 'curriculum_name',
+                'model' => 'App\Models\CurriculumManagement',
+                'attributes' => ['ng-model' => 'changeSubject()']
+            ]
+        );
+
+        $this->crud->addField(
+            [
+                'label' => 'Level',
+                'type' => 'select',
+                'name' => 'year_id',
+                'entity' => 'year',
+                'attribute' => 'year',
+                'model' => 'App\Models\YearManagement'
+            ]
+        );
+
+
+
+        $this->crud->addField(
             [   // Table
                 'name' => 'subject_details',
                 'label' => '',
                 'type' => 'child',
                 'entity_singular' => 'item', // used on the "Add X" button
-                'store_in' => 'subject_details',
+                // 'store_in' => 'subject_details',
                 'columns' => [
-                    [
-                        'label' => 'Subject',
+                    [                    
+                        'label' => 'Subject Name',
                         'type' => 'child_section',
-                        'name' => 'subject',
-                        'entity' => 'subject_details',
+                        'name' => 'subject_id',
+                        'entity' => 'subject',
                         'attribute' => 'subject_code',
                         // 'size' => 4,
                         'model' => 'App\Models\SubjectManagement'
                     ],
                     [
-                        'label' => 'Year',
-                        'type' => 'child_year',
-                        'name' => 'year_id',
-                        'entity' => 'subject_details',
-                        'attribute' => 'year',
-                        // 'size' => 4,
-                        'model' => 'App\Models\YearManagement'
+                        'label' => 'Subject Code',
+                        'name' => 'subj_code',
+                        'type' => 'child_code',
                     ],
                     [
                         'label' => 'Description',
-                        'type' => 'child_description',
                         'name' => 'description',
+                        'type' => 'child_description',
                     ],
                     [
-                        'label' => 'Unit(s)',
-                        'type' => 'child_unit',
+                        'label' => 'No. Unit',
                         'name' => 'unit',
+                        'type' => 'child_unit',
                         // 'size' => 1
                     ],
                     // [
@@ -98,17 +123,44 @@ class SectionManagementCrudController extends CrudController
         // ------ CRUD COLUMNS
         $this->crud->removeColumn('subject_details');
 
-        $this->crud->addColumn([
-            'name' => 'subject_year',
-            'label' => 'Year',
-            'type' => 'subject_year'
-        ])->beforeColumn('section'); 
 
-        $this->crud->addColumn([
-            'name' => 'subject_name',
-            'label' => 'Subject',
-            'type' => 'subject_name'
-        ])->beforeColumn('section'); 
+
+
+        $this->crud->addColumn(
+            [
+               'label' => "Subject", // Table column heading
+               'type' => "select",
+               'name' => 'curriculum_id', // the column that contains the ID of that connected entity;
+               'entity' => 'curriculum', // the method that defines the relationship in your Model
+               'attribute' => "curriculum_name", // foreign key attribute that is shown to user
+               'model' => "App\Models\CurriculumManagement", // foreign key model
+            ]
+        );
+
+        $this->crud->addColumn(
+            [
+               'label' => "Level", // Table column heading
+               'type' => "select",
+               'name' => 'year_id', // the column that contains the ID of that connected entity;
+               'entity' => 'year', // the method that defines the relationship in your Model
+               'attribute' => "year", // foreign key attribute that is shown to user
+               'model' => "App\Models\YearManagement", // foreign key model
+            ]
+        );
+
+
+
+        // $this->crud->addColumn([
+        //     'name' => 'subject_year',
+        //     'label' => 'Grade Year',
+        //     'type' => 'subject_year'
+        // ]); 
+
+        // $this->crud->addColumn([
+        //     'name' => 'subject_name',
+        //     'label' => 'Curriculum',
+        //     'type' => 'subject_name'
+        // ]); 
 
         $this->crud->addColumn([
             'name' => 'subject_description',
@@ -118,9 +170,15 @@ class SectionManagementCrudController extends CrudController
 
         $this->crud->addColumn([
             'name' => 'subject_unit',
-            'label' => 'Unit(s)',
+            'label' => 'No. Unit',
             'type' => 'subject_unit'
         ]);
+         $this->crud->addColumn([
+            'name' => 'subject_total_units',
+            'label' => 'Total',
+            'type' => 'subject_total_units'
+        ]);
+         
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
@@ -147,6 +205,9 @@ class SectionManagementCrudController extends CrudController
         // $this->crud->removeButtonFromStack($name, $stack);
         // $this->crud->removeAllButtons();
         // $this->crud->removeAllButtonsFromStack('line');
+
+
+        // $this->crud->addButtonFromView('line', 'view', 'section_view', 'beginning');
 
         // ------ CRUD ACCESS
         // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
@@ -209,5 +270,12 @@ class SectionManagementCrudController extends CrudController
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
+    }
+
+    public function View ($id) {
+        $data = SectionManagement::find($id);
+        // dd($data);
+
+        return view('custom.view_section', compact('data'));
     }
 }

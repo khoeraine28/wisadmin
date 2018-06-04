@@ -5,7 +5,7 @@
         ng-model="item.{{ $field['name'] }}"
         post-render
         required
-        id="subject"
+        id="{{ $field['name'] }}"
         shared-scope="<% item %>"
         {{-- id="{{ $field['attribute']}}-" --}}
         @include('crud::inc.field_attributes', ['default_class' =>  'form-control select2'])
@@ -14,7 +14,7 @@
 
             @if (isset($field['model']))
                 @foreach ($field['model']::all() as $connected_entity_entry)
-                    <option value="{{ $connected_entity_entry->curriculum_id }}">
+                    <option value="{{ $connected_entity_entry->id }}">
                         {{ $connected_entity_entry->{$field['attribute']} }}
                     </option>
                 @endforeach
