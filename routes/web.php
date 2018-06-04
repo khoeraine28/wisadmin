@@ -28,15 +28,12 @@ Route::group([
 ], function() {
     // your CRUD resources and other admin routes here
     CRUD::resource('student', 'StudentCrudController');
-<<<<<<< HEAD
     CRUD::resource('misc', 'MiscCrudController');
-=======
     CRUD::resource('schoolyear', 'SchoolYearCrudController');
     CRUD::resource('curriculum_management', 'CurriculumManagementCrudController');
     CRUD::resource('subject_management', 'SubjectManagementCrudController');
     CRUD::resource('year_management', 'YearManagementCrudController');
     CRUD::resource('section_management', 'SectionManagementCrudController');
->>>>>>> 07ad41e1e50b09dc8a8e4e99b84cee5eaffc38e4
     CRUD::resource('tag', 'TagCrudController');
     Route::get('student/{students}/print', 'StudentPrintController@index');
 });
