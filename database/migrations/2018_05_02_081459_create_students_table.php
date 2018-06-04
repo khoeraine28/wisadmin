@@ -14,7 +14,9 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('studentnumber')->unique();   
             $table->date('application');
+            $table->string('schoolyear');
             $table->enum('level', ['','PRESCHOOL', 'GRADESCHOOL', 'MIDDLE SCHOOL', 'HIGH SCHOOL']);
             $table->longText('photo')->nullable(); //notsure
             $table->string('firstname');
@@ -93,7 +95,7 @@ class CreateStudentsTable extends Migration
             $table->longText('mothersignature')->nullable();
             $table->date('date');
             //------------------3rd page
-            $table->string('schoolyear');
+            
             $table->boolean('asthma')->nullable();
             $table->boolean('asthmainhaler')->nullable();
             $table->boolean('allergy')->nullable();

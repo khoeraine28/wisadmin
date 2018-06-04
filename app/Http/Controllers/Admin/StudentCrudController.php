@@ -53,12 +53,27 @@ class StudentCrudController extends CrudController
                 'format' => 'dd-mm-yyyy',
                 'language' => 'fr'
             ],
+            'wrapperAttributes' => [
+                'class' => 'form-group col-md-6'
+           ]
         ],'update/create/both');
 
         $this->crud->addField(
             ['name' => 'level', 
             'tab' => 'Applicant Information',
-            'type' => 'enum']
+            'type' => 'enum',
+            'wrapperAttributes' => [
+                        'class' => 'form-group col-md-6'
+                    ],]
+            , 'update/create/both');
+
+        $this->crud->addField(
+            ['name' => 'studentnumber',
+            'label' => 'Student Number', 
+            'tab' => 'Applicant Information',
+            'wrapperAttributes' => [
+                        'class' => 'form-group col-md-6'
+                    ],]
             , 'update/create/both');
 
         $this->crud->addField([// image
@@ -400,7 +415,7 @@ class StudentCrudController extends CrudController
                     'school' => 'NAME OF SCHOOL',
                     'yearattended' => 'ACADEMIC YEAR ATTENDED',
                 ],
-                'max' => 10, // maximum rows allowed in the table
+                'max' => 3, // maximum rows allowed in the table
                 'min' => 1 // minimum rows allowed in the table
             ],'update/create/both');
 
@@ -759,9 +774,9 @@ class StudentCrudController extends CrudController
             $this->crud->addField(
             ['name' => 'schoolyear',
             'label' => 'School Year',
-            'tab' => "$tab3",
+            'tab' => "Applicant Information",
             'wrapperAttributes' => [
-                'class' => 'form-group col-md-9'
+                'class' => 'form-group col-md-6'
            ]]
             , 'update/create/both');
 
@@ -1226,17 +1241,18 @@ class StudentCrudController extends CrudController
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
             
-        $this->crud->setColumns(['firstname','lastname','middlename','gender','otherinfo',]);
+        $this->crud->setColumns(['studentnumber','firstname','lastname','middlename','gender',]);
 
         // ------ CRUD BUTTONS
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
-        // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
+        //$this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
         // $this->crud->addButtonFromModelFunction($stack, $name, $model_function_name, $position); // add a button whose HTML is returned by a method in the CRUD model
-        // $this->crud->addButtonFromView($stack, $name, $view, $position); // add a button whose HTML is in a view placed at resources\views\vendor\backpack\crud\buttons
+         $this->crud->addButtonFromView('line', 'Print', 'print', 'beginning'); // add a button whose HTML is in a view placed at resources\views\vendor\backpack\crud\buttons
         // $this->crud->removeButton($name);
         // $this->crud->removeButtonFromStack($name, $stack);
         // $this->crud->removeAllButtons();
         // $this->crud->removeAllButtonsFromStack('line');
+
 
         // ------ CRUD ACCESS
         // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
@@ -1265,7 +1281,7 @@ class StudentCrudController extends CrudController
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.
         // Does not work well with AJAX datatables.
-        // $this->crud->enableExportButtons();
+        $this->crud->enableExportButtons();
 
         // ------ ADVANCED QUERIES
         // $this->crud->addClause('active');
