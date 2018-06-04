@@ -84,11 +84,11 @@
         </table>
 
         <div class="array-controls btn-group m-t-10">
-<<<<<<< HEAD
+
             <button ng-if="max == -1 || items.length < max" class="btn btn-sm btn-default" type="button" ng-click="addItem()"><i class="fa fa-plus"></i> {{ $item_name }}</button>
-=======
-            <button ng-if="max == -1 || items.length < max" class="btn btn-sm btn-default" type="button" ng-click="addItem()"><i class="fa fa-plus"></i> Add {{ $item_name }}</button>
->>>>>>> 07ad41e1e50b09dc8a8e4e99b84cee5eaffc38e4
+
+<button ng-if="max == -1 || items.length < max" class="btn btn-sm btn-default" type="button" ng-click="addItem()"><i class="fa fa-plus"></i> Add {{ $item_name }}</button>
+
         </div>
 
     </div>
