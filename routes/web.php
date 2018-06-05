@@ -35,10 +35,7 @@ Route::group([
     CRUD::resource('year_management', 'YearManagementCrudController');
     CRUD::resource('section_management', 'SectionManagementCrudController');
     CRUD::resource('tag', 'TagCrudController');
-<<<<<<< HEAD
 
     // Route::get('section_management/{id}/view', 'SectionManagementCrudController@View')->name('ViewSecion');
-=======
     Route::get('student/{students}/print', 'StudentPrintController@index');
->>>>>>> 3a06529cee00f31e1d0f4100fa15425f1b83dabf
 });
