@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<nav class="navbar navbar-expand-lg navbar-light navbar-top nav bg-light py-0 p-lg-4 px-0 pl-1">
+<nav class="navbar navbar-expand-lg navbar-light navbar-top nav bg-light py-0 p-lg-3 px-0 pl-1">
   <div class="container r-pad">
       <a class="navbar-brand logo-top" href="#">
         <img src="{{ asset('images/logo.png') }}" alt="">

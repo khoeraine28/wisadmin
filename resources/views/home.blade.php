@@ -148,35 +148,47 @@
 				        <ul>
 				            <li class="we-slide">
 				                <div class="quoteContainer">
-				                    <p class="quote-phrase"><span class="quote-marks">"</span> I was literally BLOWN AWAY by Company A's work! They went above and beyond all of our expectations with design, usability. and branding, I will reccommend them to everyone I know!<class="quote-marks">"</span>
+				                    <p class="quote-phrase">I was literally BLOWN AWAY by Company A's work! They went above and beyond all of our expectations with design, usability. and branding, I will reccommend them to everyone I know!<class="quote-marks">"</span>
 
 				                    </p>
 				                </div>
-				                <div class="authorContainer">
-				                    <footer class="blockquote-footer text-center">John Mathew Pring </footer>
+				                <div class="d-flex flex-wrap offset-md-3 p-0 mt-2">
+				                	<div>
+				                		<img height="50" width="50" src="http://static3.uk.businessinsider.com/image/589a1765dd0895cb6e8b49f8-1200/.jpg" class="img-fluid" alt="">
+				                	</div>
+			                    	<div>
+				                    	<footer class="blockquote-footer mt-3">John Mathew Pring </footer>
+				                	</div>
 				                </div>
 				            </li>
 				            <li class="we-slide">
 				                <div class="quoteContainer">
 				                    <p class="quote-phrase">
-				                    	<span class="quote-marks">"</span>
 				                    	I could not stop staring! Company A's Web Solutions are by far the most elegant solutions, you can't beat their quality and attention to detail!
-				                    	<span class="quote-marks">"</span>
-
 				                    </p>
 				                </div>
-				                <div class="authorContainer">
-				                    <footer class="blockquote-footer text-center">John Mathew Pring </footer>
+				               <div class="d-flex flex-wrap offset-md-3 p-0 mt-2">
+				                	<div>
+				                		<img height="50" width="50" src="http://static3.uk.businessinsider.com/image/589a1765dd0895cb6e8b49f8-1200/.jpg" class="img-fluid" alt="">
+				                	</div>
+			                    	<div>
+				                    	<footer class="blockquote-footer mt-3">John Mathew Pring </footer>
+				                	</div>
 				                </div>
 				            </li>
 				            <li class="we-slide">
 				                <div class="quoteContainer">
-				                    <p class="quote-phrase"><span class="quote-marks">"</span>Carl Fakeguy, was the most helpful designer I've ever hired. He listened to my ideas and advised against things that could negatively affect my CEO. Company A is by far the most generous and helpful company, 5/5!<span class="quote-marks">"</span>
+				                    <p class="quote-phrase">Carl Fakeguy, was the most helpful designer I've ever hired. He listened to my ideas and advised against things that could negatively affect my CEO. Company A is by far the most generous and helpful company, 5/5!
 
 				                    </p>
 				                </div>
-				                <div class="authorContainer">
-				                    <footer class="blockquote-footer text-center">John Mathew Pring </footer>
+				                <div class="d-flex flex-wrap offset-md-3 p-0 mt-2">
+				                	<div>
+				                		<img height="50" width="50" src="http://static3.uk.businessinsider.com/image/589a1765dd0895cb6e8b49f8-1200/.jpg" class="img-fluid" alt="">
+				                	</div>
+			                    	<div>
+				                    	<footer class="blockquote-footer mt-3">John Mathew Pring </footer>
+				                	</div>
 				                </div>
 				            </li>
 				        </ul>
@@ -292,29 +304,105 @@
 	</div>
 </section>
 
-<section class="footer-section px-sm-5 pt-sm-5" style="background-image: url({{ asset('images/wis1-1.jpg') }}); background-size: cover">
-	<div class="col-md-5">
-		<img width="250" src="{{ asset('images/logo.png') }}" alt="">
-		<p class="text-center font-weight-light text-white">
-			FIL-AM HI-WAY FRIENDSHIP <br>
-			ANGELES CITY, PAMPANGA <br><br>
-			CAMBRIDGE INTERNATIONAL ACCREDITED <br><br>
-			TELEPHONE: 045 1234567 <br>
-			EMAIL: REGISTRAR@WESTFIELDS.EDU.PH <br>
-			MOBILE: 0912345678
-		</p>
+<section class="contactUs px-sm-5 py-sm-5" style="background-image: url({{ asset('images/wis1-1.jpg') }}); background-size: cover; border-top: 5px solid #F6BB3D; color: #9B999A">
+	<div class="row">
+		
+		<div class="col-md-8 mx-auto contact-form">
+			<h3 class="text-center font-weight-bolder">CONTACT US</h3>
+
+			<form class="needs-validation mt-5" novalidate>
+
+				<div class="form-row">
+					<div class="col">
+						<label for="">First Name</label>
+						<input type="text" class="form-control" placeholder="First name">
+					</div>
+
+					<div class="col">
+						<label for="">Last Name</label>
+						<input type="text" class="form-control" placeholder="Last name">
+					</div>
+				</div>
+
+				<div class="form-row mt-2">
+					<div class="col">
+
+						<label for="">Email</label>
+						<input type="email" class="form-control" placeholder="Email">
+					</div>
+					<div class="col">
+
+						<label for="">Phone Number</label>
+						<input type="text" class="form-control" placeholder="Phone Number">
+					</div>
+				</div>
+				 
+
+				<div class="form-row mt-2">
+					<div class="col">
+						<label for="">Message</label>
+						<textarea class="form-control" placeholder="Message" rows="3"></textarea>
+					</div>
+				</div>
+				
+				<button class="btn btn-primary mt-4" type="submit">Submit</button>
+			</form>
+		</div>
+
+		<div class="col-md-3 address">
+			<img width="250" src="{{ asset('images/logo.png') }}" alt="">
+			<br><br>
+			<div class="d-inline-block">
+				<div class="d-inline-block">
+					<p style="color: #ECE7D8; font-size: 12px;">
+						Fil-Am Hi-Way Friendship <br>
+						Angeles City, Pampanga
+							<br><br>
+						Commitment To Excellence
+							<br><br>
+						Cambridge International Accredited 
+					</p>
+					<p class="mb-0" style="color: #ECE7D8;" >
+						<i class="fas fa-phone"></i>&nbsp;
+						<span style="font-size: 13px;">045-123-4567</span>
+					</p>
+					<p class="mb-0" style="color: #ECE7D8;" >
+						<i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;  
+						<span style="font-size: 13px;">09171234567</span>
+					</p>
+					<p style="color: #ECE7D8;" >
+						<i class="fas fa-envelope"></i>&nbsp;  
+						<span style="font-size: 13px;">registrar@westfields.edu.ph</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	
 	</div>
-	<div class="clearfix"></div>
-	<div class="container copryright py-3">
-			<small class="text-center text-white font-weight-light text-uppercase">
-				<footer>
-					© 2018 westfields.edu.ph<br>
-					Powered by <b>Tigernet Hosting and IT Services</b>
-				</footer>
-			</small>
-		</p>
-	</div>
+
+	
 </section>
+
+<footer class="footer-section py-4" style="background-color: #661F99;">
+	<div class="container">
+		<div class="d-flex flex-wrap flex-row justify-content-between">
+			
+			<div class="social-links">
+				<nav class="nav">
+					<a class="nav-link active" href="#"><i class="fab fa-facebook-f"></i></a>
+					<a class="nav-link" href="#"><i class="fab fa-twitter"></i></a>
+					<a class="nav-link" href="#"><i class="fab fa-youtube"></i></a>
+				</nav>
+			</div>
+			<div class="mt-3 copyright">
+				<small class="text-center d-block mx-auto text-white font-weight-light">
+					© 2018 westfields.edu.ph | Powered by <b>Tigernet Hosting and IT Services</b>
+				</small>
+			</div>
+		
+		</div>
+	</div>
+</footer>
 </div>
 
 
