@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Misc extends Model
+class Level extends Model
 {
     use CrudTrait;
 
@@ -15,11 +15,11 @@ class Misc extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'miscs';
+    protected $table = 'levels';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['name','miscellaneous','schoolyear_id'];
+    protected $fillable = ['year_level_id','misc_id','payment','payment_type'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -34,8 +34,11 @@ class Misc extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function schoolyear(){
-        return $this->belongsTo("App\Models\schoolYear");
+    public function yearLevel(){
+        return $this->belongsTo("App\Models\YearManagement");
+    }
+    public function misc(){
+        return $this->belongsTo("App\Models\Misc");
     }
     /*
     |--------------------------------------------------------------------------
@@ -48,11 +51,6 @@ class Misc extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-
-    public function getAttributes()
-    {
-        return $this->attributes;
-    }
 
     /*
     |--------------------------------------------------------------------------

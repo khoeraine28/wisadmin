@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\MiscRequest as StoreRequest;
-use App\Http\Requests\MiscRequest as UpdateRequest;
+use App\Http\Requests\YearManagementRequest as StoreRequest;
+use App\Http\Requests\YearManagementRequest as UpdateRequest;
 
-class MiscCrudController extends CrudController
+class YearManagementCrudController extends CrudController
 {
     public function setup()
     {
@@ -18,9 +18,9 @@ class MiscCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Misc');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/misc');
-        $this->crud->setEntityNameStrings('misc', 'Miscellaneous');
+        $this->crud->setModel('App\Models\YearManagement');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/year_management');
+        $this->crud->setEntityNameStrings('Year Management', 'Year Management');
 
         /*
         |--------------------------------------------------------------------------
@@ -35,59 +35,7 @@ class MiscCrudController extends CrudController
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
-        $this->crud->child_resource_included = ['select' => false, 'number' => false];
 
-
-        $this->crud->addField([
-            'name' => 'miscellaneous',
-            'label' => 'misc',
-            'type' => 'child_misc',
-            'entity_singular' => 'Add Line', // used on the "Add X" button
-            'columns' => [
-                ['label' => 'Code',
-                    'type' => 'child_text',
-                    'name' => 'code',],
-                ['label' => 'Description',
-                    'type' => 'child_text',
-                    'name' => 'description',],
-                ['label' => 'Amount',
-                    'type' => 'child_number',
-                    'name' => 'amount',],
-            ],
-            'max' => 12, // maximum rows allowed in the table
-            'min' => 1 // minimum rows allowed in the table
-        ]);
-
-        // $this->crud->addField(
-        //     ['name' => 'schoolyear',
-        //     'label' => 'School Year',
-        //     'wrapperAttributes' => [
-        //                 'class' => 'form-group col-md-6'
-        //             ],]
-        //     , 'update/create/both');
-
-            $this->crud->addField(
-            [
-            'label' => "School Year",
-               'type' => 'select2',
-               'name' => 'schoolyear_id', // the db column for the foreign key //schoolyearid
-               'entity' => 'schoolyear', // the method that defines the relationship in your Model
-               'attribute' => 'schoolYear', // foreign key attribute that is shown to user
-               'model' => "App\Models\schoolYear",
-            'wrapperAttributes' => [
-                        'class' => 'form-group col-md-6'
-                    ],]
-            , 'update/create/both');
-
-        $this->crud->addField(
-            ['name' => 'name',
-            'label' => 'Miscellaneous Name',
-            'wrapperAttributes' => [
-                        'class' => 'form-group col-md-6'
-                    ],]
-            , 'update/create/both');
-
-        
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
@@ -95,12 +43,10 @@ class MiscCrudController extends CrudController
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
-        $this->crud->setColumns(['name',]);
 
         // ------ CRUD BUTTONS
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
         // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
-        $this->crud->addButtonFromView('line', 'Print', 'print', 'beginning');
         // $this->crud->addButtonFromModelFunction($stack, $name, $model_function_name, $position); // add a button whose HTML is returned by a method in the CRUD model
         // $this->crud->addButtonFromView($stack, $name, $view, $position); // add a button whose HTML is in a view placed at resources\views\vendor\backpack\crud\buttons
         // $this->crud->removeButton($name);
@@ -117,9 +63,8 @@ class MiscCrudController extends CrudController
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('reorder');
 
         // ------ CRUD DETAILS ROW
-         $this->crud->enableDetailsRow();
-        // NOTE: you also need to do allow access to the right users: 
-         $this->crud->allowAccess('details_row');
+        // $this->crud->enableDetailsRow();
+        // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('details_row');
         // NOTE: you also need to do overwrite the showDetailsRow($id) method in your EntityCrudController to show whatever you'd like in the details row OR overwrite the views/backpack/crud/details_row.blade.php
 
         // ------ REVISIONS
@@ -136,7 +81,7 @@ class MiscCrudController extends CrudController
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.
         // Does not work well with AJAX datatables.
-        $this->crud->enableExportButtons();
+        // $this->crud->enableExportButtons();
 
         // ------ ADVANCED QUERIES
         // $this->crud->addClause('active');
@@ -170,12 +115,5 @@ class MiscCrudController extends CrudController
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
-    }
-
-    public function showDetailsRow($id){
-        $misc = $this->crud->model->find($id);
-        //$data = $this->crud->model->getAttributes();
-        $data = $misc->getAttributes();
-        return view('MiscDetailsRow',['data'=>$data]);
     }
 }

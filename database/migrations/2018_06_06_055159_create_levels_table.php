@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMiscsTable extends Migration
+class CreateLevelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,13 @@ class CreateMiscsTable extends Migration
      */
     public function up()
     {
-        Schema::create('miscs', function (Blueprint $table) {
+        Schema::create('levels', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('schoolyear_id');
-            $table->string('name');
-            $table->LongText('miscellaneous');
+                
+            $table->string('year_level_id');
+            $table->string('misc_id');
+            $table->integer('payment');
+            $table->enum('payment_type',['Full Payment','Installment']);
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateMiscsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('miscs');
+        Schema::dropIfExists('levels');
     }
 }

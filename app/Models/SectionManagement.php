@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Misc extends Model
+class SectionManagement extends Model
 {
     use CrudTrait;
 
@@ -15,11 +15,11 @@ class Misc extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'miscs';
+    protected $table = 'section_managements';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['name','miscellaneous','schoolyear_id'];
+    protected $fillable = ['section', 'subject_details'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -34,8 +34,8 @@ class Misc extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function schoolyear(){
-        return $this->belongsTo("App\Models\schoolYear");
+    public function curriculum(){
+        return $this->hasOne('App\Models\CurriculumManagement');
     }
     /*
     |--------------------------------------------------------------------------
@@ -48,11 +48,6 @@ class Misc extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-
-    public function getAttributes()
-    {
-        return $this->attributes;
-    }
 
     /*
     |--------------------------------------------------------------------------
