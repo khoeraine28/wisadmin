@@ -47,16 +47,16 @@
               </button>
 
               <li class="nav-item">
-                <a class="nav-link" href="#"><i class="d-lg-none fas fa-user-graduate"></i> Students</a>
+                <a class="nav-link" href="#">Students</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><i class="d-lg-none fas fa-users"></i> Parents</a>
+                <a class="nav-link" href="#">Parents</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><i class="d-lg-none fas fa-user-tie"></i> Faculty and Staff</a>
+                <a class="nav-link" href="#">Faculty and Staff</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><i class="d-lg-none fas fa-graduation-cap"></i> Alumni</a>
+                <a class="nav-link" href="#">Alumni</a>
               </li>
             </ul>
       

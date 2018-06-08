@@ -2,6 +2,10 @@ body {
 	min-width: 300px;
 }
 
+a {
+  cursor: pointer;
+}
+
 .seperator-line {
     border: 1px solid #ccc;
     width: 4%;
@@ -191,11 +195,19 @@ body {
   box-shadow: 0 0 4px rgba(164,164,164,.5);
   background-color: #FFF;
 }
+
+.common-links .owl-carousel i {
+  cursor: pointer;
+}
 .common-links .owl-carousel a { 
   font-family: "Encode Sans Compressed",sans-serif;
   color: #4b2e83;
   font-weight: 700;
 }
+.common-links .owl-carousel a:hover i { 
+  transition: all 0.3s ease-in-out;
+  color: #4b2e83;
+} 
 .common-links .owl-carousel .item {
   content: '';
   border-right: 1px solid #f6e6e6;
