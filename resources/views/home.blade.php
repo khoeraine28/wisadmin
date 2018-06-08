@@ -4,13 +4,18 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<link rel="icon" href="{{ asset('images/favicon-32x32.png') }}" sizes="32x32" />
+	<link rel="icon" href="{{ asset('images/favicon-192x192.png') }}" sizes="192x192" />
+	<link rel="apple-touch-icon-precomposed" href="{{ asset('images/favicon-180x180.png') }}" />
+
 
 	<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
-
+	
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
