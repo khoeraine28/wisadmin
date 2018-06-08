@@ -1,6 +1,31 @@
 <div class="container-fluid social-links p-0 px-lg-2" style="background-color: #53197d;">
-  <div class="container py-3" style="position: relative;">
-    <input class="form-control col-md-3 ml-auto mr-5 rounded-0 form-control-sm" type="text" placeholder="Search" style="background-color: #eee0f9;">
+  <div class="container d-flex flex-wrap justify-content-between py-2" style="position: relative;">
+    <div class="col p-0">
+      <div class="contact-info d-flex mt-2">
+        <p class="mb-0">
+          <small>
+            <a href="mailto:apag.dx.am@gmail.com" class="nav-link">
+              <i class="fa fa-envelope "></i>&nbsp; 
+              <span class="d-none d-md-inline">registrar@westfields.edu.ph</span>
+            </a>
+          </small>
+        </p>
+
+        <p class="mb-0">
+          <small>
+            <a href="javascript:void(0)" class="nav-link">
+              <i class="fa fa-mobile "></i>&nbsp; 
+              <span class="d-none d-md-inline">+639123456789</span>
+            </a>
+          </small>
+        </p>
+
+      </div>
+    </div>
+
+    <div class="col p-0">
+      <input class="form-control col-md-6 ml-auto mr-5 mt-1 rounded-0 form-control-sm" type="text" placeholder="Search" style="background-color: #eee0f9; cursor: text;">
+    </div>
   </div>
 </div>
 

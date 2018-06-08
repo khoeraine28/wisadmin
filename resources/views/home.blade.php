@@ -11,9 +11,17 @@
 
     <!-- Bootstrap CSS -->
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    {{-- <link rel="stylesheet" href="http://idangero.us/swiper/dist/css/swiper.min.css"> --}}
+
+
 	<link rel="stylesheet" href="{{ asset('css/wis.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/testimonial-slider.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/social-icons.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/slick-theme.css') }}">
+
     <title>WIS</title>
   </head>
   <body>
@@ -23,15 +31,34 @@
 	@include('partials.navbar')
 </section>
 
-<section class="banner-section" style="min-height: 200px; height: 450px; position: relative; background-image: url({{ asset('images/slider/img5.jpg') }}); z-index: 0;">
-
-
+<section class="banner-section" style="background-image: url({{ asset('images/slider/img5-large.jpg') }});">
+	{{-- <picture>
+		<source media="(max-width: 799px)" srcset="{{ asset('images/slider/1.jpg') }}">
+		<source media="(max-width: 800px)" srcset="{{ asset('images/slider/img5-large.jpg') }}">
+		<img src="{{ asset('images/slider/img5-large.jpg') }}" class="img-fluid" alt="banner-image">
+	</picture> --}}
 
 
 	<div class="info">
 		<div class="inner">
-			<h3>Simply swipe on any device!</h3>
-			<p>Use this buttons or your fingers. No matter what you do, no matter which device you choose, the picture will swipe and swipe again!</p>
+
+				<div id='slider' class='swipe'>
+				  <div class='swipe-wrap'>
+				    <div>
+						<h3>Simply swipe on any device!</h3>
+						<p>Use this buttons or your fingers. No matter what you do, no matter which device you choose, the picture will swipe and swipe again!</p>
+				    </div>
+				    <div>
+						<h3>Simply swipe on any device!</h3>
+						<p>Use this buttons or your fingers. No matter what you do, no matter which device you choose, the picture will swipe and swipe again!</p>
+				    </div>
+				    <div>
+						<h3>Simply swipe on any device!</h3>
+						<p>Use this buttons or your fingers. No matter what you do, no matter which device you choose, the picture will swipe and swipe again!</p>
+				    </div>
+				  </div>
+				</div>
+
 		</div>
 		<div class="buttons">
 			<button class="btn-prev">&larr;</button>
@@ -47,7 +74,53 @@
 	<div class="row">
 
 		<div class="col-md-10 mx-auto p-0">
-			<ul class="nav d-flex flex-wrap bg-white p-4 justify-content-between" style="margin-top: -30px;">
+			<div class="owl-carousel owl-theme pt-sm-3">
+			    <div class="item text-center">
+			    	<a class="nav-link" href="#">
+						<i class="fas fa-2x fa-ticket-alt"></i><br><br>
+						ARTSUW
+					</a>
+			    </div>
+			    <div class="item text-center">
+			    	<a class="nav-link" href="#">
+						<i class="fas fa-2x fa-map-marker-alt"></i><br><br>
+						MAPS
+					</a>
+			    </div>
+			    <div class="item text-center">
+			    	<a class="nav-link" href="#">
+						<i class="fas fa-2x fa-cogs"></i><br><br>
+						MYUW
+					</a>
+			    </div>
+			    <div class="item text-center">
+			    	<a class="nav-link" href="#">
+						<i class="fas fa-2x fa-trophy"></i><br><br>
+						ATHLETICS
+					</a>
+			    </div>
+			    <div class="item text-center">
+			    	<a class="nav-link" href="#">
+						<i class="fas fa-2x fa-share-square"></i><br><br>
+						SOCIAL
+					</a>
+			    </div>
+			    <div class="item text-center">
+			    	<a class="nav-link" href="#">
+						<i class="fas fa-2x fa-book-open"></i><br><br>
+						LIBRARIES
+					</a>
+			    </div>
+			    <div class="item text-center">
+			    	<a class="nav-link" href="#">
+						<i class="fas fa-2x fa-user-md"></i><br><br>
+						UW MEDICINE
+					</a>
+			    </div>
+			</div>
+
+{{-- 			<ul class="nav d-flex flex-nowrap bg-white p-4 justify-content-between" style="margin-top: -30px;">
+				
 				<li class="nav-item text-center">
 					<a class="nav-link" href="#">
 						<i class="fas fa-2x fa-ticket-alt"></i><br><br>
@@ -91,14 +164,15 @@
 					</a>
 				</li>
 
-			</ul>
+			</ul>  
+ --}}			
 		</div>
 	</div>
 </section>
 
 <section class="news-and-event-section py-0 py-sm-2 px-md-5 " style="background-image: url({{ asset('images/MUN-Slider.jpg')  }}); ">
-		<h4 class="text-center font-weight-bolder text-white pt-3 pt-sm-4 pt-md-5">News and Events</h4>
-		<div class="seperator-line seperator-middle mb-5 mt-4"></div>
+		<h4 class="text-center font-weight-bolder mb-4 text-white pt-3 pt-sm-4 pt-md-5">News and Events</h4>
+		{{-- <div class="seperator-line seperator-middle mb-5 mb-sm-3 mt-sm-2 mt-4"></div> --}}
 		<div class="d-inline-flex justify-content-around pb-5 flex-wrap flex-md-nowrap">	
 			<div class="card shadow-lg mx-sm-1 mx-sm-3 mx-lg-5 rounded-0">
 				<img class="card-img-top rounded-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4qq4SuQlfbIIGU0FtHXb2tpVtm-C2-zfbbZ0OS7cJrqg29dR2" alt="Card image cap">
@@ -130,178 +204,63 @@
 		</div>
 </section>
 
-<section class="testimonial-section bg-white">
-	<div class="container pt-5">
+<section id="testim" class="testim">
+{{-- 	<div class="container pt-5">
 		<div class="row d-flex flex-wrap justify-content-between">
-			<div class="col-md-4 pb-5">
-				<h4 class="text-center mb-4">Students' Corner</h4>
-				<div class="students_corner">
-					
-					<div class="container-fluid btn-bar p-0">
-				    	<div id="buttons">
-				    		<a href="javascript:void(0)" id="prev" href="#"><</a>
-				    		<a href="javascript:void(0)" id="next" href="#" style="float: right;">></a> 
-				    	</div>
-				    </div>
+			 --}}
+<!--         <div class="testim-cover"> -->
+            <div class="wrap">
 
-					<div id="slides">
-				        <ul>
-				            <li class="we-slide">
-				                <div class="quoteContainer">
-				                    <p class="quote-phrase">I was literally BLOWN AWAY by Company A's work! They went above and beyond all of our expectations with design, usability. and branding, I will reccommend them to everyone I know!<class="quote-marks">"</span>
+                <span id="right-arrow" class="arrow right fa fa-chevron-right"></span>
+                <span id="left-arrow" class="arrow left fa fa-chevron-left "></span>
+                <ul id="testim-dots" class="dots">
+                    <li class="dot active"></li><!--
+                    --><li class="dot"></li><!--
+                    --><li class="dot"></li><!--
+                    --><li class="dot"></li><!--
+                    --><li class="dot"></li>
+                </ul>
+                <div id="testim-content" class="cont">
+                    
+                    <div class="active">
+                        <div class="img"><img src="https://image.ibb.co/hgy1M7/5a6f718346a28820008b4611_750_562.jpg" alt=""></div>
+                        <h2>Lorem P. Ipsum</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>                    
+                    </div>
 
-				                    </p>
-				                </div>
-				                <div class="d-flex flex-wrap offset-md-3 p-0 mt-2">
-				                	<div>
-				                		<img height="50" width="50" src="http://static3.uk.businessinsider.com/image/589a1765dd0895cb6e8b49f8-1200/.jpg" class="img-fluid" alt="">
-				                	</div>
-			                    	<div>
-				                    	<footer class="blockquote-footer mt-3">John Mathew Pring </footer>
-				                	</div>
-				                </div>
-				            </li>
-				            <li class="we-slide">
-				                <div class="quoteContainer">
-				                    <p class="quote-phrase">
-				                    	I could not stop staring! Company A's Web Solutions are by far the most elegant solutions, you can't beat their quality and attention to detail!
-				                    </p>
-				                </div>
-				               <div class="d-flex flex-wrap offset-md-3 p-0 mt-2">
-				                	<div>
-				                		<img height="50" width="50" src="http://static3.uk.businessinsider.com/image/589a1765dd0895cb6e8b49f8-1200/.jpg" class="img-fluid" alt="">
-				                	</div>
-			                    	<div>
-				                    	<footer class="blockquote-footer mt-3">John Mathew Pring </footer>
-				                	</div>
-				                </div>
-				            </li>
-				            <li class="we-slide">
-				                <div class="quoteContainer">
-				                    <p class="quote-phrase">Carl Fakeguy, was the most helpful designer I've ever hired. He listened to my ideas and advised against things that could negatively affect my CEO. Company A is by far the most generous and helpful company, 5/5!
+                    <div>
+                        <div class="img"><img src="https://image.ibb.co/cNP817/pexels_photo_220453.jpg" alt=""></div>
+                        <h2>Mr. Lorem Ipsum</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>                    
+                    </div>
 
-				                    </p>
-				                </div>
-				                <div class="d-flex flex-wrap offset-md-3 p-0 mt-2">
-				                	<div>
-				                		<img height="50" width="50" src="http://static3.uk.businessinsider.com/image/589a1765dd0895cb6e8b49f8-1200/.jpg" class="img-fluid" alt="">
-				                	</div>
-			                    	<div>
-				                    	<footer class="blockquote-footer mt-3">John Mathew Pring </footer>
-				                	</div>
-				                </div>
-				            </li>
-				        </ul>
-		    		</div>
-				</div>
-			</div>
-			<div class="col-md-4 pb-5">
-				<h4 class="text-center mb-4">Testimonials</h4>
-				<div class="testimonials">
-					
-					<div class="container-fluid btn-bar p-0">
-				    	<div id="buttons">
-				    		<a href="javascript:void(0)" id="prev" href="#"><</a>
-				    		<a href="javascript:void(0)" id="next" href="#" style="float: right;">></a> 
-				    	</div>
-				    </div>
+                    <div>
+                        <div class="img"><img src="https://image.ibb.co/iN3qES/pexels_photo_324658.jpg" alt=""></div>
+                        <h2>Lorem Ipsum</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>                    
+                    </div>
 
-					<div id="slides">
-				        <ul>
-				            <li class="we-slide">
-				                <div class="quoteContainer">
-				                    <p class="quote-phrase"><span class="quote-marks">"</span> I was literally BLOWN AWAY by Company A's work! They went above and beyond all of our expectations with design, usability. and branding, I will reccommend them to everyone I know!<class="quote-marks">"</span>
+                    <div>
+                        <div class="img"><img src="https://image.ibb.co/kL6AES/Top_SA_Nicky_Oppenheimer.jpg" alt=""></div>
+                        <h2>Lorem De Ipsum</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>                    
+                    </div>
 
-				                    </p>
-				                </div>
-				                <div class="authorContainer">
-				                    <footer class="blockquote-footer text-center">John Mathew Pring </footer>
-				                </div>
-				            </li>
-				            <li class="we-slide">
-				                <div class="quoteContainer">
-				                    <p class="quote-phrase">
-				                    	<span class="quote-marks">"</span>
-				                    	I could not stop staring! Company A's Web Solutions are by far the most elegant solutions, you can't beat their quality and attention to detail!
-				                    	<span class="quote-marks">"</span>
+                    <div>
+                        <div class="img"><img src="https://image.ibb.co/gUPag7/image.jpg" alt=""></div>
+                        <h2>Ms. Lorem R. Ipsum</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>                    
+                    </div>
 
-				                    </p>
-				                </div>
-				                <div class="authorContainer">
-				                    <footer class="blockquote-footer text-center">John Mathew Pring </footer>
-				                </div>
-				            </li>
-				            <li class="we-slide">
-				                <div class="quoteContainer">
-				                    <p class="quote-phrase"><span class="quote-marks">"</span>Carl Fakeguy, was the most helpful designer I've ever hired. He listened to my ideas and advised against things that could negatively affect my CEO. Company A is by far the most generous and helpful company, 5/5!<span class="quote-marks">"</span>
+                </div>
 
-				                    </p>
-				                </div>
-				                <div class="authorContainer">
-				                    <footer class="blockquote-footer text-center">John Mathew Pring </footer>
-				                </div>
-				            </li>
-				        </ul>
-			    	</div>
+            </div>
+<!--         </div> -->
 
-			    	
 
-				</div>
-			</div>
-
-			<div class="col-md-4 pb-5">
-				<h4 class="text-center mb-4"">Did you know?</h4>
-				<div class="did-you-know">
-					
-					<div class="container-fluid btn-bar p-0">
-				    	<div id="buttons">
-				    		<a href="javascript:void(0)" id="prev" href="#"><</a>
-				    		<a href="javascript:void(0)" id="next" href="#" style="float: right;">></a> 
-				    	</div>
-				    </div>
-
-					<div id="slides">
-				        <ul>
-				            <li class="we-slide">
-				                <div class="quoteContainer">
-				                    <p class="quote-phrase"><span class="quote-marks">"</span> I was literally BLOWN AWAY by Company A's work! They went above and beyond all of our expectations with design, usability. and branding, I will reccommend them to everyone I know!<class="quote-marks">"</span>
-
-				                    </p>
-				                </div>
-				                <div class="authorContainer">
-				                    <footer class="blockquote-footer text-center">John Mathew Pring </footer>
-				                </div>
-				            </li>
-				            <li class="we-slide">
-				                <div class="quoteContainer">
-				                    <p class="quote-phrase">
-				                    	<span class="quote-marks">"</span>
-				                    	I could not stop staring! Company A's Web Solutions are by far the most elegant solutions, you can't beat their quality and attention to detail!
-				                    	<span class="quote-marks">"</span>
-
-				                    </p>
-				                </div>
-				                <div class="authorContainer">
-				                    <footer class="blockquote-footer text-center">John Mathew Pring </footer>
-				                </div>
-				            </li>
-				            <li class="we-slide">
-				                <div class="quoteContainer">
-				                    <p class="quote-phrase"><span class="quote-marks">"</span>Carl Fakeguy, was the most helpful designer I've ever hired. He listened to my ideas and advised against things that could negatively affect my CEO. Company A is by far the most generous and helpful company, 5/5!<span class="quote-marks">"</span>
-
-				                    </p>
-				                </div>
-				                <div class="authorContainer">
-				                    <footer class="blockquote-footer text-center">John Mathew Pring </footer>
-				                </div>
-				            </li>
-				        </ul>
-		    		</div>
-				</div>
-			</div>
-
+			{{-- 
 		</div>
-	</div>
+	</div> --}}
 </section>
 
 <section class="contactUs px-sm-5 py-sm-5" style="background-image: url({{ asset('images/wis1-1.jpg') }}); background-size: cover; border-top: 5px solid #F6BB3D; color: #9B999A">
@@ -389,14 +348,20 @@
 			
 			<div class="social-links">
 				<nav class="nav">
-					<a class="nav-link active" href="#"><i class="fab fa-facebook-f"></i></a>
-					<a class="nav-link" href="#"><i class="fab fa-twitter"></i></a>
-					<a class="nav-link" href="#"><i class="fab fa-youtube"></i></a>
+					    <div class="social__item">
+					            <a target="_blank" href="https://facebook.com" class="social__icon--facebook"><i class="icon--facebook"></i></a>
+					    </div>
+						<div class="social__item">
+					            <a target="_blank" href="https://twitter.com/matchboxhero10" class="social__icon--twitter"><i class="icon--twitter"></i></a>
+					    </div>
+					    <div class="social__item">
+					            <a target="_blank" href="https://twitter.com/matchboxhero10" class="social__icon--youtube"><i class="fab fa-youtube"></i></a>
+					    </div>
 				</nav>
 			</div>
-			<div class="mt-3 copyright">
-				<small class="text-center d-block mx-auto text-white font-weight-light">
-					© 2018 westfields.edu.ph | Powered by <b>Tigernet Hosting and IT Services</b>
+			<div class="col mt-3">
+				<small class="text-center d-block mx-auto text-white font-weight-bold">
+					© 2018 westfields.edu.ph
 				</small>
 			</div>
 		
@@ -406,11 +371,36 @@
 </div>
 
 
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	{{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> --}}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+	<script>
+					
+			$('.owl-carousel').owlCarousel({
+			    loop:false,
+			    margin: 5,
+			    nav:false,
+			    responsive:{
+			        0:{
+			            items: 3
+			        },
+			        600: {
+			            items: 4
+			        },
+			        1000: {
+			        	items: 6
+			        },
+			        1200: {
+			            items: 7
+			        }
+			    }
+			})
+
+	</script>
+
 	<script>
 		function checkWindow () {
 			if( $(window).width() <= 992 ) {
@@ -419,6 +409,7 @@
 				$('.transformative').removeClass('mobile-view');
 			}
 		}
+
 		$(window).resize(checkWindow);
 		$(document).ready(checkWindow);
 
@@ -427,14 +418,30 @@
 				'opacity': 1
 			});
 		}
+
 	</script>
-	<script src="{{ asset('js/we-slider.js') }}"></script>
+
+	<script src="{{ asset('js/testimonial-slider.js') }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/swipe/2.0.0/swipe.js"></script>
+
 	<script>
-		$(document).ready(function () {
-			new initSlider('.students_corner', '.students_corner ul', '.students_corner .we-slide');
-			new initSlider('.testimonials', '.testimonials ul', '.testimonials .we-slide');
-			new initSlider('.did-you-know', '.did-you-know ul', '.testimonials .we-slide');
+		window.mySwipe = new Swipe(document.getElementById('slider'), {
+		  startSlide: 0,
+		  speed: 400,
+		  auto: 5000,
+		  continuous: true,
+		  disableScroll: false,
+		  stopPropagation: false,
+		  // callback: function(index, elem) {},
+		  // transitionEnd: function(index, elem) {}
 		});
+
+		$('.btn-next').on('click', function () {
+			window.mySwipe.next();
+		})
+		$('.btn-prev').on('click', function () {
+			window.mySwipe.prev();
+		})
 	</script>
   </body>
 </html>
