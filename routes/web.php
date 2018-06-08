@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 
@@ -29,13 +29,18 @@ Route::group([
     // your CRUD resources and other admin routes here
     CRUD::resource('student', 'StudentCrudController');
     CRUD::resource('misc', 'MiscCrudController');
+<<<<<<< HEAD
     CRUD::resource('level', 'LevelCrudController');
+=======
+>>>>>>> 8ab252476cf3b8994bcdf39f7e075b97ba7497b1
     CRUD::resource('schoolyear', 'SchoolYearCrudController');
     CRUD::resource('curriculum_management', 'CurriculumManagementCrudController');
     CRUD::resource('subject_management', 'SubjectManagementCrudController');
     CRUD::resource('year_management', 'YearManagementCrudController');
     CRUD::resource('section_management', 'SectionManagementCrudController');
     CRUD::resource('tag', 'TagCrudController');
+
+    // Route::get('section_management/{id}/view', 'SectionManagementCrudController@View')->name('ViewSecion');
     Route::get('student/{students}/print', 'StudentPrintController@index');
     Route::get('misc/{students}/print', 'MiscPrintController@index');
 

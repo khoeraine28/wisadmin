@@ -35,7 +35,7 @@ class CurriculumManagement extends Model
     |--------------------------------------------------------------------------
     */
     public function subject(){
-        return $this->belongsTo('App\Models\SubjectManagement');
+        return $this->belongsTo('App\Models\SubjectManagement', 'curriculum_id');
     }
     /*
     |--------------------------------------------------------------------------

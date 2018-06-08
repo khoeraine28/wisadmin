@@ -12,22 +12,16 @@ class CurriculumManagementTableSeeder extends Seeder
     public function run()
     {
 		DB::table('curriculum_managements')->insert([
-            'curriculum_name' => "ENGLISH"
+            'curriculum_name' => "BEC"
+        ]);
+        DB::table('curriculum_managements')->insert([
+            'curriculum_name' => "ICT"
+        ]);
+        DB::table('curriculum_managements')->insert([
+            'curriculum_name' => "TS"
         ]);
         DB::table('curriculum_managements')->insert([
             'curriculum_name' => "MAPEH"
-        ]);
-        DB::table('curriculum_managements')->insert([
-            'curriculum_name' => "FILIPINO"
-        ]);
-        DB::table('curriculum_managements')->insert([
-            'curriculum_name' => "WEB DEVELOPMENT"
-        ]);
-        DB::table('curriculum_managements')->insert([
-            'curriculum_name' => "COMPUTER PROGRAMMING"
-        ]);
-        DB::table('curriculum_managements')->insert([
-            'curriculum_name' => "KUNG FU"
         ]);
     }
 }

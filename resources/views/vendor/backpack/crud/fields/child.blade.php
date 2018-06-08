@@ -118,7 +118,14 @@
                 $interpolateProvider.startSymbol('<%');
                 $interpolateProvider.endSymbol('%>');
             });
+<<<<<<< HEAD
             window.angularApp.controller('tableController', function($scope, $rootScope){
+=======
+
+
+            window.angularApp.controller('tableController', function($scope){
+
+>>>>>>> 8ab252476cf3b8994bcdf39f7e075b97ba7497b1
                 $scope.datos = {!! json_encode($subject_management) !!};
                 // $rootScope.items = $scope;
                 // console.log($rootScope.datos);
@@ -135,24 +142,38 @@
                     });
                     return total;
                 }
+<<<<<<< HEAD
+=======
+                var g;
+>>>>>>> 8ab252476cf3b8994bcdf39f7e075b97ba7497b1
                 $scope.changeSubject = function() {
                     console.log("a = " , this.item);
-                    var selectedSubject = this.item.subject;
-                    var dynamicDesc, dynamicUnit;
+                    var selectedSubject = this.item.subject_id;
+                    var dynamicDesc, dynamicUnit, dynamicCode;
                     
                     angular.forEach($scope.datos, function(value, key) {
+<<<<<<< HEAD
                         console.log("val = " , value);
                         if(value.curriculum_id == selectedSubject) {
+=======
+
+>>>>>>> 8ab252476cf3b8994bcdf39f7e075b97ba7497b1
                         // console.log("val = " , value);
+
+                        if(value.id == selectedSubject) {
+                        console.log("val = " , value);
                             // this.item.description = value.subject_description;
                             dynamicDesc = value.subject_description;
                             dynamicUnit = value.no_unit;
+                            dynamicCode = value.subject_code
                         }
                     });
                     this.item.description = dynamicDesc;
                     this.item.unit = dynamicUnit;
+                    this.item.subj_code = dynamicCode;
                     dynamicDesc = null;
                     dynamicUnit = null;
+                    dynamicCode = null;
                 }
         
                 $scope.addItem = function(){

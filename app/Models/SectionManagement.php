@@ -19,10 +19,12 @@ class SectionManagement extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['section', 'subject_details'];
+    protected $fillable = ['curriculum_id', 'year_id', 'subject_details'];
     // protected $hidden = [];
     // protected $dates = [];
-
+    protected $casts = [
+        'subject_details' => 'object'
+    ];
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
@@ -35,7 +37,16 @@ class SectionManagement extends Model
     |--------------------------------------------------------------------------
     */
     public function curriculum(){
-        return $this->hasOne('App\Models\CurriculumManagement');
+        return $this->belongsTo('App\Models\CurriculumManagement');
+    }
+
+
+    public function subject () {
+        return $this->belongsTo('App\Models\SubjectManagement', 'curriculum_id');
+    }
+
+    public function year () {
+        return $this->belongsTo('App\Models\YearManagement');
     }
     /*
     |--------------------------------------------------------------------------

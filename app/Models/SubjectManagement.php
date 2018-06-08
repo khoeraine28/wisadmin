@@ -19,7 +19,7 @@ class SubjectManagement extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['curriculum_id', 'subject_code', 'subject_description', 'no_unit'];
+    protected $fillable = ['curriculum_id', 'subject_code', 'subject_description', 'no_unit', 'price'];
     // protected $hidden = [];
     // protected $dates = [];
     protected $appends = array('subject');
@@ -36,7 +36,11 @@ class SubjectManagement extends Model
     |--------------------------------------------------------------------------
     */
     public function curriculum(){
-        return $this->hasOne('App\Models\CurriculumManagement', 'id');
+        return $this->belongsTo('App\Models\CurriculumManagement');
+    }
+
+    public function section () {
+        return $this->belongsTo('App\Models\SectionManagement');
     }
     /*
     |--------------------------------------------------------------------------

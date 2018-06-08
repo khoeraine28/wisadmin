@@ -15,7 +15,8 @@ class SectionManagements extends Migration
     {
         Schema::create('section_managements', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('section');
+            $table->integer('curriculum_id');
+            $table->integer('year_id');
             $table->longText('subject_details');
             $table->timestamps();
         });
